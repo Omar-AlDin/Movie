@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Press Start 2P', sans-serif;
+    color: #eee;
+    background-color: #222;
+    overflow-x: hidden;
+    /* Prevents weird horizontal phone shaking */
+}
+
+/* LAYOUT */
+header {
+    position: relative;
+    height: 25vh;
+}
+
+main {
+    height: 75vh;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+}
+
+.left {
+    width: 52rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.right {
+    width: 52rem;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers the score layouts horizontally */
+}
+
+/* ELEMENTS STYLE */
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.new {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.guess {
+    background: none;
+    border: 4px solid #ffffff;
+    font-family: inherit;
+    color: inherit;
+    font-size: 2rem;
+    padding: 1.5rem;
+    width: 32rem;
+    text-align: center;
+}
+
+.btn {
+    border: none;
+    background-color: #eee;
+    color: #222;
+    font-size: 2rem;
+    font-family: inherit;
+    padding: 2rem 3rem;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #ccc;
+}
+
+.message {
+    font-size: 2rem;
+    height: 3rem;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Keeps text and numbers on a single line, spaced cleanly */
+.label-score,
+.label-highscore {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 35rem;
+    margin-bottom: 2rem;
+}
+
+.image {
+    max-height: 35vh;
+    border: 4px solid #fff;
+    border-radius: 4px;
+    transition: border 0.4s ease-in-out;
+}
+
+/* 📱 RESPONSIVE PHONE FIXES */
+@media (max-width: 1080px) {
+    header {
+        height: auto;
+        padding-top: 6rem;
+        /* 🟢 Reduced from 9rem to save top vertical space */
+    }
+
+    h1 {
+        position: static;
+        transform: none;
+        font-size: 1.8rem;
+        /* 🟢 Reduced from 2.2rem to take up less vertical room */
+        margin-bottom: 1rem;
+    }
+
+    main {
+        flex: 1;
+        /* Takes up all remaining vertical space perfectly */
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        /* Centers the entire game board vertically */
+        gap: 1rem;
+        /* 🟢 Reduced gap to prevent pushing elements off-screen */
+        padding: 1rem 2rem;
+    }
+
+    .left {
+        width: 100%;
+        gap: 1.2rem;
+        /* 🟢 Shrinks the massive gaps between image, input, and skip button */
+    }
+
+    /* 🟢 NEW: Directly caps the movie image height on mobile so it doesn't push elements down */
+    .image {
+        max-height: 25vh;
+        /* 👈 Reduced from 35vh so the poster fits comfortably on short screens */
+        width: auto;
+    }
+
+    .right {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .input-row {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        /* 🟢 Reduced from 1.5rem */
+    }
+
+    /* 🟢 Reduces button vertical thickness on mobile devices */
+    .btn {
+        padding: 1.2rem 2.5rem;
+        /* 👈 Shorter padding makes buttons physically thinner */
+        font-size: 1.3rem;
+    }
+
+    .guess {
+        width: 100%;
+        max-width: 32rem;
+        padding: 1.2rem;
+        /* 👈 Matches button scaling */
+        font-size: 1.6rem;
+    }
+
+    .check {
+        width: 100%;
+        max-width: 32rem;
+    }
+
+    .label-score,
+    .label-highscore {
+        margin-bottom: 1rem;
+        /* 🟢 Brings scores slightly closer together */
+    }
+
+    .guessthemovie {
+        font-size: 1.3rem;
+    }
+
+    .message {
+        font-size: 1.3rem;
+
+    }
+
+    .new {
+        font-size: 0.8rem;
+
+    }
+}

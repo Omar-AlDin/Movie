@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Movie Game</title>
+</head>
+
+<body>
+    <header>
+        <h1 class="guessthemovie">Guess The Movie!</h1>
+
+        <button class="btn new">🎟 New Game</button>
+    </header>
+    <main>
+        <section class="left">
+            <p class="message">Start guessing...</p>
+
+            <img src="movie-1.jpg" alt="you're next poster" class="image" />
+            <div class="input-row">
+                <input type="text" class="guess" placeholder="Movie name..." /> <button class="btn check">🎬
+                    Check!</button>
+
+            </div>
+            <button class="btn skip">🎭 Skip</button>
+
+        </section>
+        <section class="right">
+            <p class="label-score">💯 Score: <span class="score">20</span></p>
+            <p class="label-highscore">
+                🥇 Highscore: <span class="highscore">0</span>
+            </p>
+        </section>
+
+    </main>
+    <script src="movie.js"></script>
+</body>
+
+</html>
