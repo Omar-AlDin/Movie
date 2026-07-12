@@ -270,6 +270,7 @@ const skip = function () {
     // next image
     skipCount++;
     console.log(skipCount);
+    guess.value = '';
     document.querySelector('.message').textContent = "Skipped";
     document.querySelector('.message').style.color = '#ff4a4a';
     setTimeout(
@@ -329,6 +330,7 @@ const newGame = function () {
     console.log("New game is working");
     document.querySelector('.message').textContent = "Start guessing...";
     document.querySelector('.image').style.borderColor = '#ffffff';
+    guess.value = '';
     //reset images
 
 
