@@ -348,7 +348,7 @@ const newGame = function () {
 
 
     generateFreshRound();
-    console.log(movieDeck);
+    // console.log(movieDeck);
 
     movieElement.src = movieDeck[0].image;
     // console.log(movieDeck)
