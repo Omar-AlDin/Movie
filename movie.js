@@ -249,7 +249,7 @@ const endGame = function () {
         // return console.log("Skip 2 is working");
     } else if (skipCount >= 3) {
         document.querySelector('.image').src = "bahgat.png";
-        document.querySelector('.message').textContent = "Lazy playing... Try harder! 🥱"
+        document.querySelector('.message').textContent = "Lazy playing 🥱... Try harder! "
         console.log(">=3")
     } else {
         document.querySelector('.image').src = "scott.jpg";
