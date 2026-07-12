@@ -61,6 +61,8 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
+
+
 .new {
     position: absolute;
     top: 2rem;
@@ -74,9 +76,10 @@ h1 {
 }
 
 .guess {
+
     background: none;
     border: 4px solid #ffffff;
-    font-family: inherit;
+    font-family: 'Your-Retro-Font', Arial, sans-serif;
     color: inherit;
     font-size: 2rem;
     padding: 1.5rem;
