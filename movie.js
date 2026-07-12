@@ -265,8 +265,17 @@ const skip = function () {
     // next image
     skipCount++;
     console.log(skipCount);
+    document.querySelector('.message').textContent = "Skipped";
+    document.querySelector('.message').style.color = '#ff4a4a';
+    setTimeout(
 
+        function () {
+
+            document.querySelector('.message').style.color = 'white';
+
+        }, 500);
     movieDeck.shift();
+
 
     if (movieDeck.length > 0) {
 
