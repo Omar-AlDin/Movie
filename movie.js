@@ -228,7 +228,7 @@ guess.addEventListener('keydown', function (e) {
 });
 
 const endGame = function () {
-
+    document.querySelector('.message').style.color = 'white';
     if (skipCount === totalMovies) {
         document.querySelector('.image').src = "angry.jpg";
         document.querySelector('.message').textContent = "Did you even try? 🙄"
