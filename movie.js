@@ -261,6 +261,9 @@ const skip = function () {
         return;
 
     }
+    if (score === 0) {
+        return;
+    }
 
     score -= 2;
     document.querySelector('.score').textContent = score;
