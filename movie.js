@@ -60,7 +60,7 @@ const generateFreshRound = function () {
     // EDGE CASE: If we don't have enough unseen movies left for a full round, 
     // reset the available pool back to the very beginning!
     if (availableMovies.length < roundLength) {
-        console.log("All movies used up! Resetting global master pool.");
+        // console.log("All movies used up! Resetting global master pool.");
         availableMovies = [...MASTER_MOVIE_POOL];
     }
 
@@ -103,7 +103,7 @@ const checkGuess = function () {
     const userGuess = guess.value.toLowerCase().trim();
     if (movieDeck.length === 0) {
 
-        return console.log("zero images in the deck");
+        return;
     }
 
     if (score <= 0) {
@@ -140,7 +140,7 @@ const checkGuess = function () {
 
 
         if (movieDeck.length === 0) {
-            console.log("movie deck reached 0")
+            // console.log("movie deck reached 0")
             document.querySelector('.message').textContent = "Victory 🎉";
             document.querySelector('.image').src = 'scott.jpg';
             document.querySelector('.image').style.borderColor = '#523fff';
@@ -245,16 +245,16 @@ const endGame = function () {
     if (skipCount === totalMovies) {
         document.querySelector('.image').src = "angry.jpg";
         document.querySelector('.message').textContent = "Did you even try? 🙄"
-        console.log("skip = 5")
+        // console.log("skip = 5")
         // return console.log("Skip 2 is working");
     } else if (skipCount >= 3) {
         document.querySelector('.image').src = "bahgat.png";
         document.querySelector('.message').textContent = "Lazy playing 🥱... Try harder! "
-        console.log(">=3")
+        // console.log(">=3")
     } else {
         document.querySelector('.image').src = "scott.jpg";
         document.querySelector('.message').textContent = "Victory! 🎉"
-        console.log("skip count is less than 2 or less")
+        // console.log("skip count is less than 2 or less")
         document.querySelector('.image').style.borderColor = '#523fff';
 
     }
@@ -269,7 +269,7 @@ const skip = function () {
 
     if (movieDeck.length === 0) {
 
-        console.log("End of images");
+        // console.log("End of images");
 
         return;
 
@@ -282,7 +282,7 @@ const skip = function () {
     document.querySelector('.score').textContent = score;
     // next image
     skipCount++;
-    console.log(skipCount);
+    // console.log(skipCount);
     guess.value = '';
     document.querySelector('.message').textContent = "Skipped";
     document.querySelector('.message').style.color = '#ff4a4a';
@@ -340,7 +340,7 @@ const newGame = function () {
     skipCount = 0;
     document.querySelector('.score').textContent = score;
     document.querySelector('.highscore').textContent = highScore;
-    console.log("New game is working");
+    // console.log("New game is working");
     document.querySelector('.message').textContent = "Start guessing...";
     document.querySelector('.image').style.borderColor = '#ffffff';
     guess.value = '';
