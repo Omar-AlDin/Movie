@@ -242,6 +242,8 @@ const endGame = function () {
         document.querySelector('.image').src = "scott.jpg";
         document.querySelector('.message').textContent = "Victory! 🎉"
         console.log("skip count is less than 2 or less")
+        document.querySelector('.image').style.borderColor = '#523fff';
+
     }
     if (score > highScore) {
         highScore = score;
