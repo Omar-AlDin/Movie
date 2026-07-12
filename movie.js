@@ -76,7 +76,8 @@ let movieAnswer = true
 let guess = document.querySelector('.guess');
 
 let highScore = 0;
-
+let skipCount = 0;
+const totalMovies = 5
 
 movieElement.src = movieDeck[0].image;
 
@@ -127,15 +128,16 @@ const checkGuess = function () {
 
         if (movieDeck.length === 0) {
             console.log("movie deck reached 0")
-            document.querySelector('.message').textContent = "You Win 🎉";
+            document.querySelector('.message').textContent = "Victory 🎉";
             document.querySelector('.image').src = 'scott.jpg';
             document.querySelector('.image').style.borderColor = '#523fff';
 
 
-            if (score > highScore) {
-                highScore = score;
-                document.querySelector('.highscore').textContent = highScore;
-            }
+            // if (score > highScore) {
+            //     highScore = score;
+            //     document.querySelector('.highscore').textContent = highScore;
+            // }
+            endGame();
 
             return;
         }
@@ -225,10 +227,30 @@ guess.addEventListener('keydown', function (e) {
 
 });
 
+const endGame = function () {
+
+    if (skipCount === totalMovies) {
+        document.querySelector('.image').src = "angry.jpg";
+        document.querySelector('.message').textContent = "Did you even try? 🙄"
+        console.log("skip = 5")
+        // return console.log("Skip 2 is working");
+    } else if (skipCount >= 3) {
+        document.querySelector('.image').src = "bahgat.png";
+        document.querySelector('.message').textContent = "Lazy playing... Try harder! 🥱"
+        console.log(">=3")
+    } else {
+        document.querySelector('.image').src = "scott.jpg";
+        document.querySelector('.message').textContent = "Victory! 🎉"
+        console.log("skip count is less than 2 or less")
+    }
+    if (score > highScore) {
+        highScore = score;
+        document.querySelector('.highscore').textContent = highScore;
+    }
+}
 
 const skip = function () {
 
-    // next image
 
     if (movieDeck.length === 0) {
 
@@ -236,24 +258,49 @@ const skip = function () {
 
         return;
 
-    } else {
+    }
 
-        movieDeck.shift();
+    score -= 2;
+    document.querySelector('.score').textContent = score;
+    // next image
+    skipCount++;
+    console.log(skipCount);
 
-        if (movieDeck.length > 0) {
-            score -= 2;
-            document.querySelector('.score').textContent = score;
+    movieDeck.shift();
 
-            movieElement.src = movieDeck[0].image;
-
-        }
-
-        else return console.log("Skip 2 is working");
+    if (movieDeck.length > 0) {
 
 
-    } console.log("Working here down")
+        movieElement.src = movieDeck[0].image;
 
-}
+    }
+
+    else {
+        endGame();
+
+        // if (skipCount === totalMovies) {
+        //     document.querySelector('.image').src = "angry.jpg";
+        //     document.querySelector('.message').textContent = "Did you even try? 🙄"
+        //     console.log("skip = 5")
+        //     // return console.log("Skip 2 is working");
+        // } else if (skipCount >= 3) {
+        //     document.querySelector('.image').src = "bahgat.png";
+        //     document.querySelector('.message').textContent = "Lazy playing... Try harder! 🥱"
+        //     console.log(">=3")
+        // } else {
+        //     document.querySelector('.image').src = "scott.jpg";
+        //     document.querySelector('.message').textContent = "Victory! 🎉"
+        //     console.log("skip count is less than 2 or less")
+        // }
+        // if (score > highScore) {
+        //     highScore = score;
+        //     document.querySelector('.highscore').textContent = highScore;
+        // }
+    }
+
+
+
+};
 
 
 
@@ -262,6 +309,7 @@ document.querySelector('.skip').addEventListener('click', skip);
 const newGame = function () {
     // reset scores, highscore, score
     score = 20;
+    skipCount = 0;
     document.querySelector('.score').textContent = score;
     document.querySelector('.highscore').textContent = highScore;
     console.log("New game is working");

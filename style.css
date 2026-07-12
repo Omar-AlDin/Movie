@@ -100,8 +100,17 @@ h1 {
 
 .message {
     font-size: 2rem;
-    height: 3rem;
+    height: auto;
+    /* 🟢 Changed from 3rem so it handles two lines safely without clipping */
+    min-height: 3rem;
+    /* 🟢 Keeps the minimum height layout when the text is short */
+    text-align: center;
+    /* 🟢 Forcefully centers the text horizontally */
+    margin-bottom: 1.5rem;
+    /* 🟢 Adds a clean gap between the text and the top of the image */
     transition: color 0.3s ease-in-out;
+    width: 100%;
+    /* 🟢 Ensures it spans the width of the container to center correctly */
 }
 
 /* Keeps text and numbers on a single line, spaced cleanly */
