@@ -264,8 +264,8 @@ const endGame = function () {
     }
 }
 
-const skip = function () {
 
+const skip = function () {
 
     if (movieDeck.length === 0) {
 
@@ -275,11 +275,20 @@ const skip = function () {
 
     }
     if (score === 0) {
+
         return;
     }
-
     score -= 2;
     document.querySelector('.score').textContent = score;
+
+    if (score === 0) {
+
+        document.querySelector('.image').src = "damn.jpg";
+        document.querySelector('.message').textContent = "DAMN!";
+        document.querySelector('.new').textContent = "DAMN!";
+
+        return;
+    }
     // next image
     skipCount++;
     // console.log(skipCount);
@@ -296,6 +305,7 @@ const skip = function () {
     movieDeck.shift();
 
 
+
     if (movieDeck.length > 0) {
 
 
@@ -305,25 +315,6 @@ const skip = function () {
 
     else {
         endGame();
-
-        // if (skipCount === totalMovies) {
-        //     document.querySelector('.image').src = "angry.jpg";
-        //     document.querySelector('.message').textContent = "Did you even try? 🙄"
-        //     console.log("skip = 5")
-        //     // return console.log("Skip 2 is working");
-        // } else if (skipCount >= 3) {
-        //     document.querySelector('.image').src = "bahgat.png";
-        //     document.querySelector('.message').textContent = "Lazy playing... Try harder! 🥱"
-        //     console.log(">=3")
-        // } else {
-        //     document.querySelector('.image').src = "scott.jpg";
-        //     document.querySelector('.message').textContent = "Victory! 🎉"
-        //     console.log("skip count is less than 2 or less")
-        // }
-        // if (score > highScore) {
-        //     highScore = score;
-        //     document.querySelector('.highscore').textContent = highScore;
-        // }
     }
 
 
