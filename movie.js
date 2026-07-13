@@ -91,7 +91,7 @@ let guess = document.querySelector('.guess');
 let highScore = 0;
 let skipCount = 0;
 const totalMovies = 5
-
+movieElement.style.opacity = '0';
 movieElement.src = movieDeck[0].image;
 movieElement.style.opacity = '1';
 
