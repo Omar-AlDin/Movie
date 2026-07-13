@@ -96,6 +96,7 @@ movieElement.src = movieDeck[0].image;
 movieElement.style.opacity = '1';
 
 
+
 const checkGuess = function () {
 
     // let correctAnswer;
@@ -342,8 +343,8 @@ const newGame = function () {
 
     generateFreshRound();
     // console.log(movieDeck);
-
     movieElement.src = movieDeck[0].image;
+
     // console.log(movieDeck)
 }
 
