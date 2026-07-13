@@ -93,7 +93,7 @@ let skipCount = 0;
 const totalMovies = 5
 
 movieElement.src = movieDeck[0].image;
-
+movieElement.style.opacity = '1';
 
 
 const checkGuess = function () {
