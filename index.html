@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+
+    <style>
+        .hidden {
+            display: none
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -17,6 +24,7 @@
     <meta property="og:image" content="https://omar-aldin.github.io/Movie/scott.jpg" />
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
 </head>
 
 <body>
@@ -29,9 +37,10 @@
     <main>
         <section class="left">
             <p class="message">Start guessing...</p>
-
+            <div class="loader hidden"></div>
+            <img class="error-image hidden" src="sad-ghost3.png" alt="Failed to load" />
             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                alt="you're next poster" class="image" style="opacity: 0;" />
+                alt="Check you internet connection" class="image hidden" style="opacity: 0;" />
             <div class=" input-row">
                 <input type="text" class="guess" placeholder="Movie name / اكتب اسم الفيلم" /> <button
                     class="btn check">🎬
@@ -41,14 +50,18 @@
             <button class="btn skip">🎭 Skip</button>
 
         </section>
+
         <section class="right">
+
             <p class="label-score">💯 Score: <span class="score">20</span></p>
             <p class="label-highscore">
                 🥇 Highscore: <span class="highscore">0</span>
             </p>
+            <p class="previous-movie hidden">🎥 Previous Movie: <span class="previous-answer"></span></p>
         </section>
 
     </main>
+    <script src="config.js"></script>
     <script src="movie.js"></script>
 </body>
 
