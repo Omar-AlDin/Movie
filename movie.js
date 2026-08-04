@@ -31,7 +31,6 @@ const shuffleDeck = function (array) {
 const cleanTitle = (str) => {
     return str
         .toLowerCase()
-
         .replace(/[-_:/!?]/g, ' ')
         .replace(/[أإآ]/g, 'ا')
         .replace(/[.\-_:/!?،,]/g, ' ')
@@ -158,7 +157,7 @@ const generateFreshRound = async function () {
         selectedMovies.forEach(movie => seenMovieIds.add(movie.id))
 
         movieDeck = selectedMovies.map(formatedObj)
-        console.log(movieDeck)
+        // console.log(movieDeck)
 
         if (movieDeck.length > 0) {
             movieElement.src = movieDeck[0].image;
@@ -257,11 +256,6 @@ const checkGuess = function () {
             document.querySelector('.image').src = 'scott.jpg';
             document.querySelector('.image').style.borderColor = '#523fff';
 
-
-            // if (score > highScore) {
-            //     highScore = score;
-            //     document.querySelector('.highscore').textContent = highScore;
-            // }
             endGame();
 
             return;
@@ -465,3 +459,17 @@ const newGame = function () {
 }
 
 document.querySelector('.new').addEventListener('click', newGame);
+
+
+// document.querySelector('.hint').addEventListener('click', function () {
+
+//     let hint = document.querySelector('.message');
+//     if (score === 0) {
+//         return;
+//     }
+//     score -= 1
+//     document.querySelector('.score').textContent = score;
+//     hint.textContent = cleanTitle(movieDeck[0].title);
+
+
+// })
