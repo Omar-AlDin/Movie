@@ -106,7 +106,7 @@ const generateFreshRound = async function () {
             fetch(arabicUrl, options),
             fetch(intUrl, options)
         ]);
-        console.log(arabicMoviesRes)
+        // console.log(arabicMoviesRes)
 
         if (!arabicMoviesRes.ok && !internMovieRes.ok) {
             throw new Error("Unable to load the movies 😞")
@@ -128,7 +128,7 @@ const generateFreshRound = async function () {
             fetch(arabicUrlRandom, options),
             fetch(intUrlRandom, options)
         ]);
-        console.log(arabicUrlRandom)
+        // console.log(arabicUrlRandom)
         if (!arabicMovies.ok && !intMovies.ok) {
             throw new Error("Unable to load the movies 😞")
         }
@@ -145,7 +145,7 @@ const generateFreshRound = async function () {
         selectedMovies.forEach(movie => seenMovieIds.add(movie.id))
 
         movieDeck = selectedMovies.map(formatedObj)
-        console.log(movieDeck)
+        // console.log(movieDeck)
 
         if (movieDeck.length > 0) {
             movieElement.src = movieDeck[0].image;
