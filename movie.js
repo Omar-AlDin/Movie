@@ -28,37 +28,50 @@ const shuffleDeck = function (array) {
     }
 };
 
+const cleanTitle = (str) => {
+    return str
+        .toLowerCase()
+
+        .replace(/[-_:/!?]/g, ' ')
+        .replace(/[أإآ]/g, 'ا')
+        .replace(/[.\-_:/!?،,]/g, ' ')
+        .replace(/ة/g, "ه")
+        .replace(/\s+/g, ' ')
+        .replace('٠', '0')
+        .replace('١', '1')
+        .replace('٢', '2')
+        .replace('٣', '3')
+        .replace('٤', '4')
+        .replace('٥', '5')
+        .replace('٦', '6')
+        .replace('٧', '7')
+        .replace('٨', '8')
+        .replace('٩', '9')
+        .replace('·', '')
+        .replace('ii', '2')
+        .replace('.', '')
+        .replace(/\s+/g, ' ')
+        .trim()
+
+
+
+
+}
+
+const normalize = str => {
+    const hasLetters = /[a-zA-Z\u0600-\u06FF]/.test(str);
+    if (hasLetters) {
+        return str.replace(/\s?\d+$/g, '').replace('&', 'and').trim()
+    }
+    return str;
+}
+
+
 const formatedObj = function (movie) {
     const rawTitle = movie.original_language === "ar" ? (movie.original_title || movie.title) : movie.title;
 
-    const shortTitle = rawTitle.split(':')[0];
+    const shortTitle = rawTitle.split(':')[0].split('(')[0].split(')')[0];
 
-    const cleanTitle = (str) => {
-        return str
-            .toLowerCase()
-
-            .replace(/[-_:/!?.]/g, ' ')
-            .replace(/[أإآ]/g, 'ا')
-            .replace(/ة/g, "ه")
-            .replace(/\s+/g, ' ')
-            .replace('٠', '0')
-            .replace('١', '1')
-            .replace('٢', '2')
-            .replace('٣', '3')
-            .replace('٤', '4')
-            .replace('٥', '5')
-            .replace('٦', '6')
-            .replace('٧', '7')
-            .replace('٨', '8')
-            .replace('٩', '0')
-            .replace('·', '')
-            .replace('ii', '2')
-            .trim()
-
-
-
-
-    }
     return {
         title: cleanTitle(shortTitle),
         image: `https://image.tmdb.org/t/p/w1920${movie.backdrop_path || movie.poster_path}`
@@ -98,9 +111,9 @@ const generateFreshRound = async function () {
         const roundLength = 10;
 
 
-        const intUrl = `https://api.themoviedb.org/3/discover/movie?with_original_language=en&sort_by=popularity.desc&page=1`;
+        const intUrl = `https://api.themoviedb.org/3/discover/movie?with_original_language=en&sort_by=popularity.desc&vote_count.gte=700&page=1`;
 
-        const arabicUrl = `https://api.themoviedb.org/3/discover/movie?with_origin_country=EG&with_original_language=ar&sort_by=popularity.desc&page=1`;
+        const arabicUrl = `https://api.themoviedb.org/3/discover/movie?with_origin_country=EG&with_original_language=ar&sort_by=popularity.desc&vote_count.gte=30&page=1`;
 
         const [arabicMoviesRes, internMovieRes] = await Promise.all([
             fetch(arabicUrl, options),
@@ -120,9 +133,9 @@ const generateFreshRound = async function () {
         const randomInt = Math.floor(Math.random() * intMaxPage) + 1;
         const randomArabic = Math.floor(Math.random() * arabicMaxPage) + 1;
 
-        const intUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_original_language=en&sort_by=popularity.desc&page=${randomInt}`;
+        const intUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_original_language=en&sort_by=popularity.desc&vote_count.gte=700&page=${randomInt}`;
 
-        const arabicUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_origin_country=EG&with_original_language=ar&sort_by=popularity.desc&page=${randomArabic}`;
+        const arabicUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_origin_country=EG&with_original_language=ar&sort_by=popularity.desc&vote_count.gte=30&page=${randomArabic}`;
 
         const [arabicMovies, intMovies] = await Promise.all([
             fetch(arabicUrlRandom, options),
@@ -145,7 +158,7 @@ const generateFreshRound = async function () {
         selectedMovies.forEach(movie => seenMovieIds.add(movie.id))
 
         movieDeck = selectedMovies.map(formatedObj)
-        // console.log(movieDeck)
+        console.log(movieDeck)
 
         if (movieDeck.length > 0) {
             movieElement.src = movieDeck[0].image;
@@ -191,7 +204,8 @@ const previousMovie = function () {
     preMovie.classList.remove('hidden')
 
 }
-const checkGuess = async function () {
+
+const checkGuess = function () {
 
 
     // let correctAnswer;
@@ -213,10 +227,13 @@ const checkGuess = async function () {
 
     }
 
-    const correctAnswer = movieDeck[0].title;
 
+    const cleanUser = cleanTitle(userGuess)
+    const cleanTarget = movieDeck[0].title;
 
-    if (userGuess === correctAnswer) {
+    const correctAnswer = cleanUser === cleanTarget || normalize(cleanUser) === normalize(cleanTarget)
+
+    if (correctAnswer) {
 
         // console.log("correct");
         document.querySelector('.message').textContent = "Correct ✨"
@@ -290,6 +307,8 @@ const checkGuess = async function () {
             document.querySelector('.message').textContent = "You Lost 😥";
 
             document.querySelector('.image').src = 'angry.jpg';
+            preMovieAnswer.textContent = movieDeck[0].title;
+            preMovie.classList.remove('hidden')
 
             // console.log("score = 0")
 
@@ -377,6 +396,8 @@ const skip = function () {
     }
     score -= 2;
     document.querySelector('.score').textContent = score;
+    preMovieAnswer.textContent = movieDeck[0].title;
+    preMovie.classList.remove('hidden')
 
     if (score === 0) {
 
@@ -399,10 +420,9 @@ const skip = function () {
             document.querySelector('.message').style.color = 'white';
 
         }, 500);
-    preMovieAnswer.textContent = movieDeck[0].title;
+
     movieDeck.shift();
 
-    preMovie.classList.remove('hidden')
 
     if (movieDeck.length > 0) {
 
