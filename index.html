@@ -36,15 +36,17 @@
     </header>
     <main>
         <section class="left">
+
+
+            <div class="hint-wrapper" data-tooltip="Stuck? Click for a hint! 💡">
+                <button class="hint-btn" name="Hint" type="button"></button>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <p class="message">Start guessing...</p>
             <div class="loader hidden"></div>
-            <!-- <div class="hint">
-                <button class="hint" name="Hint" type="button"></button>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div> -->
             <img class="error-image hidden" src="sad-ghost3.png" alt="Failed to load" />
             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 alt="Check you internet connection" class="image hidden" style="opacity: 0;" />
@@ -65,6 +67,8 @@
                 🥇 Highscore: <span class="highscore">0</span>
             </p>
             <p class="previous-movie hidden">🎥 Previous Movie: <span class="previous-answer"></span></p>
+            <p class="name-movie-hint hidden">🍿 Movie Name: <span class="name-answer"></span></p>
+            <p class="year-movie">📅 Release Date: <span class="year-answer"></span></p>
         </section>
 
     </main>

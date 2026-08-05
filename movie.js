@@ -20,6 +20,7 @@ let availableMovies = [];
 let movieDeck = [];
 const seenMovieIds = new Set();
 const preMovie = document.querySelector('.previous-movie');
+const movieYear = document.querySelector('.year-movie');
 
 const shuffleDeck = function (array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -31,10 +32,9 @@ const shuffleDeck = function (array) {
 const cleanTitle = (str) => {
     return str
         .toLowerCase()
-        .replace(/[-_:/!?]/g, ' ')
-        .replace(/[أإآ]/g, 'ا')
-        .replace(/[.\-_:/!?،,]/g, ' ')
-        .replace(/ة/g, "ه")
+        .replace(/[_/!?]/g, ' ')
+        .replace(/[أإآاً]/g, 'ا')
+        .replace(/[\-_/!?،,]/g, ' ')
         .replace(/\s+/g, ' ')
         .replace('٠', '0')
         .replace('١', '1')
@@ -48,8 +48,9 @@ const cleanTitle = (str) => {
         .replace('٩', '9')
         .replace('·', '')
         .replace('ii', '2')
-        .replace('.', '')
+        .replace(/\./g, '')
         .replace(/\s+/g, ' ')
+        .replace('زّ', 'ز')
         .trim()
 
 
@@ -60,7 +61,15 @@ const cleanTitle = (str) => {
 const normalize = str => {
     const hasLetters = /[a-zA-Z\u0600-\u06FF]/.test(str);
     if (hasLetters) {
-        return str.replace(/\s?\d+$/g, '').replace('&', 'and').trim()
+        return str
+            .replace(/\s?\d+$/g, '')
+            .replace('&', 'and')
+            .replace(/ة/g, "ه")
+            .replace(/ي/g, "ى")
+            .replace(/'/g, "")
+            .split('-')[0]
+            .split(':')[0]
+            .trim()
     }
     return str;
 }
@@ -69,11 +78,15 @@ const normalize = str => {
 const formatedObj = function (movie) {
     const rawTitle = movie.original_language === "ar" ? (movie.original_title || movie.title) : movie.title;
 
-    const shortTitle = rawTitle.split(':')[0].split('(')[0].split(')')[0];
-
+    const shortTitle = rawTitle.split('(')[0].split(')')[0];
+    const semi = shortTitle.split(':')[0]
+    const cleanFull = cleanTitle(shortTitle);
+    const cleanShort = cleanTitle(semi)
     return {
-        title: cleanTitle(shortTitle),
-        image: `https://image.tmdb.org/t/p/w1920${movie.backdrop_path || movie.poster_path}`
+        title: cleanFull,
+        altTitle: cleanShort !== cleanFull ? cleanShort : null,
+        image: `https://image.tmdb.org/t/p/w1920${movie.backdrop_path || movie.poster_path}`,
+        date: movie.release_date
 
     }
 
@@ -82,11 +95,16 @@ const movieElement = document.querySelector('.image');
 const loaderElement = document.querySelector('.loader');
 const errorImage = document.querySelector('.error-image');
 const checkButton = document.querySelector('.check');
+const movieNameHint = document.querySelector('.name-movie-hint')
+let hitHint = 0;
+let skipCount = 0;
+const hintW = document.querySelector('.hint-wrapper');
 
 movieElement.onload = () => {
     loaderElement.classList.add('hidden')
     movieElement.classList.remove('hidden');
     errorImage.classList.add('hidden');
+
 
 
 };
@@ -102,13 +120,20 @@ movieElement.onerror = () => {
 };
 const generateFreshRound = async function () {
     try {
+        document.body.classList.remove('flawless-victory');
+        document.body.style.backgroundImage = 'none';
+        hitHint = 0;
+        skipCount = 0;
+        movieNameHint.classList.add('hidden')
         loaderElement.classList.remove('hidden');
         movieElement.classList.add('hidden');
         preMovie.classList.add('hidden');
         errorImage.classList.add('hidden');
+        hintW.classList.remove('show-tooltip');
+
         movieDeck = [];
         const roundLength = 10;
-
+        movieYear.classList.add('hidden')
 
         const intUrl = `https://api.themoviedb.org/3/discover/movie?with_original_language=en&sort_by=popularity.desc&vote_count.gte=700&page=1`;
 
@@ -157,7 +182,7 @@ const generateFreshRound = async function () {
         selectedMovies.forEach(movie => seenMovieIds.add(movie.id))
 
         movieDeck = selectedMovies.map(formatedObj)
-        // console.log(movieDeck)
+        console.log(movieDeck)
 
         if (movieDeck.length > 0) {
             movieElement.src = movieDeck[0].image;
@@ -188,15 +213,17 @@ let currentMovie = 1;
 let movieAnswer = true
 
 let guess = document.querySelector('.guess');
-
+let showTimeoutId;
+let hideTimeoutId;
 let highScore = 0;
-let skipCount = 0;
-const totalMovies = 5
+
+const totalMovies = 10
 movieElement.style.opacity = '0';
 // movieElement.src = movieDeck[0].poster_path;
 movieElement.style.opacity = '1';
 
 const preMovieAnswer = document.querySelector('.previous-answer');
+
 
 const previousMovie = function () {
     preMovieAnswer.textContent = movieDeck[0].title;
@@ -204,6 +231,7 @@ const previousMovie = function () {
 
 }
 
+let tooltipSuggestion = 0;
 const checkGuess = function () {
 
 
@@ -226,14 +254,18 @@ const checkGuess = function () {
 
     }
 
-
     const cleanUser = cleanTitle(userGuess)
     const cleanTarget = movieDeck[0].title;
+    const altTarget = movieDeck[0].altTitle;
 
-    const correctAnswer = cleanUser === cleanTarget || normalize(cleanUser) === normalize(cleanTarget)
+    const correctAnswer = cleanUser === cleanTarget || normalize(cleanUser) === normalize(cleanTarget) || (altTarget && (cleanUser === altTarget || normalize(cleanUser) === normalize(altTarget)));
 
     if (correctAnswer) {
-
+        hitHint = 0;
+        movieYear.classList.add('hidden')
+        movieNameHint.classList.add('hidden')
+        score += 3;
+        document.querySelector('.score').textContent = score;
         // console.log("correct");
         document.querySelector('.message').textContent = "Correct ✨"
         document.querySelector('.message').style.color = '#0fec1a';
@@ -275,11 +307,25 @@ const checkGuess = function () {
 
     }
 
-    else if (userGuess !== correctAnswer) {
-
+    else if (!correctAnswer) {
+        console.log("Not correct")
         score -= 2;
+        tooltipSuggestion += 1
 
+        if (tooltipSuggestion % 2 == 0) {
 
+            clearTimeout(showTimeoutId)
+            clearTimeout(hideTimeoutId)
+
+            showTimeoutId = setTimeout(() => {
+                hintW.classList.add('show-tooltip');
+
+            }, 1000)
+            hideTimeoutId = setTimeout(() => {
+                hintW.classList.remove('show-tooltip');
+
+            }, 3500)
+        }
         document.querySelector('.message').textContent = "Try again";
 
 
@@ -301,8 +347,10 @@ const checkGuess = function () {
             document.querySelector('.message').textContent = "You Lost 😥";
 
             document.querySelector('.image').src = 'angry.jpg';
-            preMovieAnswer.textContent = movieDeck[0].title;
-            preMovie.classList.remove('hidden')
+            previousMovie()
+            document.querySelector('.score').textContent = 0
+            movieYear.classList.add('hidden')
+            movieNameHint.classList.add('hidden')
 
             // console.log("score = 0")
 
@@ -350,19 +398,34 @@ guess.addEventListener('keydown', function (e) {
 });
 
 const endGame = function () {
+
     document.querySelector('.message').style.color = 'white';
-    if (skipCount === totalMovies) {
-        document.querySelector('.image').src = "angry.jpg";
-        document.querySelector('.message').textContent = "Did you even try? 🙄"
-        // console.log("skip = 5")
-        // return console.log("Skip 2 is working");
-    } else if (skipCount >= 6) {
+
+    if (skipCount === 0) {
+        document.body.classList.add('flawless-victory')
+        document.body.style.backgroundImage = "url('fireworks.gif')";
+        document.body.style.backgroundSize = 'cover';       // Stretches GIF to cover full screen
+        document.body.style.backgroundPosition = 'center'; // Centers the GIF
+        document.body.style.backgroundRepeat = 'no-repeat';// Prevents repeating tiling
+        document.body.style.backgroundAttachment = 'fixed';
+        document.querySelector('.image').src = "respect.gif"
+        console.log("flawless")
+        document.querySelector('.image').style.borderColor = '#523fff';
+        document.querySelector('.message').textContent = "ABSOLUTE CINEMA! 🍿🏆"
+        movieYear.classList.add('hidden')
+        preMovie.classList.add('hidden')
+        console.log("Down here")
+
+        return
+    }
+    if (skipCount >= 6) {
         document.querySelector('.image').src = "bahgat.png";
         document.querySelector('.message').textContent = "Lazy playing 🥱... Try harder! "
         // console.log(">=3")
-    } else {
+    } else if (skipCount <= 5) {
         document.querySelector('.image').src = "scott.jpg";
         document.querySelector('.message').textContent = "Victory! 🎉"
+        console.log("It happened")
         // console.log("skip count is less than 2 or less")
         document.querySelector('.image').style.borderColor = '#523fff';
 
@@ -375,7 +438,12 @@ const endGame = function () {
 
 
 const skip = function () {
-
+    if (score <= 0) {
+        return
+    }
+    movieYear.classList.add('hidden')
+    movieNameHint.classList.add('hidden')
+    hintW.classList.remove('show-tooltip');
 
     if (movieDeck.length === 0) {
 
@@ -384,25 +452,35 @@ const skip = function () {
         return;
 
     }
+    // endGame();
+    hitHint = 0;
     if (score === 0) {
 
         return;
     }
     score -= 2;
+    skipCount++;
     document.querySelector('.score').textContent = score;
     preMovieAnswer.textContent = movieDeck[0].title;
     preMovie.classList.remove('hidden')
 
-    if (score === 0) {
+    if (score <= 0) {
 
-        document.querySelector('.image').src = "damn.jpg";
-        document.querySelector('.message').textContent = "DAMN!";
-        document.querySelector('.new').textContent = "DAMN!";
+        if (skipCount === totalMovies) {
+            document.querySelector('.image').src = "sandwich.gif";
+            document.querySelector('.message').textContent = "Did you even try? 🙄"
 
+            // console.log("skip = 5")
+            // return console.log("Skip 2 is working");
+        } else {
+            document.querySelector('.image').src = "damn.jpg";
+            document.querySelector('.message').textContent = "DAMN!";
+            document.querySelector('.new').textContent = "DAMN!";
+        }
         return;
     }
     // next image
-    skipCount++;
+
     // console.log(skipCount);
     guess.value = '';
     document.querySelector('.message').textContent = "Skipped";
@@ -426,8 +504,8 @@ const skip = function () {
 
     else {
         endGame();
-    }
 
+    }
 
 
 };
@@ -461,15 +539,68 @@ const newGame = function () {
 document.querySelector('.new').addEventListener('click', newGame);
 
 
-// document.querySelector('.hint').addEventListener('click', function () {
 
-//     let hint = document.querySelector('.message');
-//     if (score === 0) {
-//         return;
-//     }
-//     score -= 1
-//     document.querySelector('.score').textContent = score;
-//     hint.textContent = cleanTitle(movieDeck[0].title);
+document.querySelector('.hint-wrapper').addEventListener('click', function () {
+    hintW.classList.remove('show-tooltip');
+    if (movieDeck.length === 0) {
+        return
+    }
+    if (hitHint >= 3 || score <= 0) return;
+
+    hitHint++;
+    preMovie.classList.add('hidden');
+    const title = movieDeck[0].title;
+
+    const createMask = (title) => {
+        const firstChar = title[0]
+        const rest = title.slice(1)
+
+        const maskedRest = rest.replace(/\S/g, '-')
+        return firstChar + maskedRest
+    }
 
 
-// })
+    const createMask2 = (title) => {
+        const firstChar = title[0]
+
+        const secondChar = title[1]
+        const rest = title.slice(2)
+        const maskedRest = rest.replace(/\S/g, '-')
+        return firstChar + secondChar + maskedRest
+    }
+
+    if (hitHint === 1) {
+        score -= 1;
+        movieYear.classList.remove('hidden')
+        document.querySelector('.year-answer').textContent = movieDeck[0].date.split('-')[0];
+
+    }
+
+    if (hitHint === 2) {
+        score -= 1;
+        movieNameHint.classList.remove('hidden')
+        document.querySelector('.name-answer').textContent = createMask(title);
+    }
+
+    if (hitHint === 3) {
+        score -= 2;
+        document.querySelector('.name-answer').textContent = createMask2(title);
+    }
+
+    document.querySelector('.score').textContent = score;
+
+    if (score <= 0) {
+        movieYear.classList.add('hidden')
+        movieNameHint.classList.add('hidden')
+        preMovie.classList.remove('hidden')
+        preMovieAnswer.textContent = movieDeck[0].title;
+        document.querySelector('.score').textContent = 0;
+        document.querySelector('.image').src = 'middle.gif'
+        document.querySelector('.message').textContent = "Congratulations, you bought your own defeat! 🛍️📉"
+
+        return;
+    }
+    // previousMovie();
+
+
+})
