@@ -418,7 +418,7 @@ const endGame = function () {
 
         return
     }
-    if (skipCount >= 6) {
+    if (skipCount >= 7) {
         document.querySelector('.image').src = "bahgat.png";
         document.querySelector('.message').textContent = "Lazy playing 🥱... Try harder! "
         // console.log(">=3")
