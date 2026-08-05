@@ -182,7 +182,7 @@ const generateFreshRound = async function () {
         selectedMovies.forEach(movie => seenMovieIds.add(movie.id))
 
         movieDeck = selectedMovies.map(formatedObj)
-        console.log(movieDeck)
+        // console.log(movieDeck)
 
         if (movieDeck.length > 0) {
             movieElement.src = movieDeck[0].image;
@@ -308,7 +308,7 @@ const checkGuess = function () {
     }
 
     else if (!correctAnswer) {
-        console.log("Not correct")
+        // console.log("Not correct")
         score -= 2;
         tooltipSuggestion += 1
 
@@ -409,12 +409,12 @@ const endGame = function () {
         document.body.style.backgroundRepeat = 'no-repeat';// Prevents repeating tiling
         document.body.style.backgroundAttachment = 'fixed';
         document.querySelector('.image').src = "respect.gif"
-        console.log("flawless")
+        // console.log("flawless")
         document.querySelector('.image').style.borderColor = '#523fff';
         document.querySelector('.message').textContent = "ABSOLUTE CINEMA! 🍿🏆"
         movieYear.classList.add('hidden')
         preMovie.classList.add('hidden')
-        console.log("Down here")
+        // console.log("Down here")
 
         return
     }
