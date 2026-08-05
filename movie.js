@@ -473,21 +473,7 @@ const skip = function () {
     preMovieAnswer.textContent = movieDeck[0].title;
     preMovie.classList.remove('hidden')
 
-    if (score <= 0) {
 
-        if (skipCount === totalMovies) {
-            document.querySelector('.image').src = "sandwich.gif";
-            document.querySelector('.message').textContent = "Did you even try? 🙄"
-
-            // console.log("skip = 5")
-            // return console.log("Skip 2 is working");
-        } else {
-            document.querySelector('.image').src = "damn.jpg";
-            document.querySelector('.message').textContent = "DAMN!";
-            document.querySelector('.new').textContent = "DAMN!";
-        }
-        return;
-    }
     // next image
 
     // console.log(skipCount);
@@ -503,7 +489,22 @@ const skip = function () {
         }, 500);
 
     movieDeck.shift();
+    if (score <= 0) {
 
+        if (skipCount === totalMovies) {
+            document.querySelector('.image').src = "sandwich.gif";
+            document.querySelector('.message').textContent = "Did you even try? 🙄"
+
+            // console.log("skip = 5")
+            // return console.log("Skip 2 is working");
+        } else {
+            document.querySelector('.image').src = "damn.jpg";
+            document.querySelector('.message').textContent = "DAMN!";
+            document.querySelector('.new').textContent = "DAMN!";
+        }
+        document.querySelector('.score').textContent = 0
+        return;
+    }
 
     if (movieDeck.length > 0) {
 
