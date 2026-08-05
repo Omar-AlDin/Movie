@@ -422,7 +422,7 @@ const endGame = function () {
         document.querySelector('.image').src = "bahgat.png";
         document.querySelector('.message').textContent = "Lazy playing 🥱... Try harder! "
         // console.log(">=3")
-    } else if (skipCount <= 5) {
+    } else if (skipCount <= 6) {
         document.querySelector('.image').src = "scott.jpg";
         document.querySelector('.message').textContent = "Victory! 🎉"
         console.log("It happened")
