@@ -8,10 +8,11 @@ An interactive, web-based movie guessing game built with pure vanilla JavaScript
 
 ## 🚀 Features
 
-* **Dynamic Game Logic:** DOM manipulation for handling user input, score tracking, and game-state updates.
-* **Skip & Hint Mechanics:** Built-in skipping system and visual hints to keep gameplay engaging.
-* **Responsive UI:** Clean CSS styling with custom media assets, adaptive borders, and dynamic feedback states.
-* **Zero Dependencies:** Built entirely with plain JavaScript without relying on external frameworks or libraries.
+* **Dynamic Game Logic:** DOM manipulation for handling user input, score tracking, skip penalties, and game-state updates.
+* **API-Powered Content:** Fetches live movie posters and metadata dynamically using the TMDB API.
+* **Multi-Tiered Hint Mechanics:** Strategic 3-stage hint system with scaling point costs to help players when stuck.
+* **Responsive Retro UI:** Clean CSS styling with custom arcade assets, dynamic feedback states, and custom victory/loss overlays.
+* **Zero Framework Dependencies:** Built entirely with plain, vanilla JavaScript without relying on external libraries or frameworks.
 
 ---
 
@@ -20,7 +21,8 @@ An interactive, web-based movie guessing game built with pure vanilla JavaScript
 * **Language:** JavaScript (ES6+)
 * **Structure:** HTML5
 * **Styling:** CSS3
-* **Hosting:** GitHub Pages
+* **API Integration:** TMDB API
+* **Deployment & CI/CD:** GitHub Pages & GitHub Actions
 
 ---
 
