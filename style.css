@@ -806,6 +806,7 @@ body.flawless-victory .label-highscore {
     .message {
         font-size: 1.3rem;
 
+
     }
 
     .new {
@@ -881,7 +882,7 @@ body.flawless-victory .label-highscore {
 
     .year-movie,
     .name-movie-hint {
-        font-size: 0.9rem;
+        font-size: 1rem;
         padding: 4px 10px;
         margin: 5px auto 0;
     }
@@ -892,5 +893,10 @@ body.flawless-victory .label-highscore {
 
     .left {
         gap: 0.8rem;
+    }
+
+    .guessthemovie {
+        font-size: 1.3rem;
+        text-align: right;
     }
 }
