@@ -898,5 +898,6 @@ body.flawless-victory .label-highscore {
     .guessthemovie {
         font-size: 1rem;
         text-align: right;
+        padding-right: 15%
     }
 }
