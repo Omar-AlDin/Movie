@@ -3,16 +3,13 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  # Optional: Allows manual trigger from the Actions tab on GitHub
-  workflow_dispatch: 
+  workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# PREVENTS CANCELLED DEPLOYMENTS
-# Ensures only one deployment runs at a time and queued ones wait
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -42,4 +39,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        
