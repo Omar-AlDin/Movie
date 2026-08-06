@@ -875,10 +875,11 @@ body.flawless-victory .label-highscore {
     .name-movie-hint {
         font-size: 1rem;
         padding: 5px 12px;
-        margin: 8px auto 0;
+        margin: 7px auto 0;
     }
 
     .image {
-        max-height: 22vh;
+        max-height: 25vh;
     }
+
 }

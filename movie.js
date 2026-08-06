@@ -49,15 +49,15 @@ const cleanTitle = (str) => {
         .replace('·', '')
         .replace('ii', '2')
         .replace(/\./g, '')
-        .replace(/\bviii/gi, '8')
-        .replace(/\bvii/gi, '7')
-        .replace(/\biii/gi, '3')
-        .replace(/\bvi/gi, '6')
-        .replace(/\biv/gi, '4')
-        .replace(/\bix/gi, '9')
-        .replace(/\bii/gi, '2')
-        .replace(/\bv/gi, '5')
-        .replace(/\bi/gi, '1')
+        .replace(/\bviii\b/gi, '8')
+        .replace(/\bvii\b/gi, '7')
+        .replace(/\biii\b/gi, '3')
+        .replace(/\bvi\b/gi, '6')
+        .replace(/\biv\b/gi, '4')
+        .replace(/\bix\b/gi, '9')
+        .replace(/\bii\b/gi, '2')
+        .replace(/\bv\b/gi, '5')
+        .replace(/\bi$/gi, '1')
         .replace('é', 'e')
         .replace(/\s+/g, ' ')
         .replace('زّ', 'ز')
@@ -77,6 +77,7 @@ const normalize = str => {
             .replace(/ة/g, "ه")
             .replace(/ي/g, "ى")
             .replace(/'/g, "")
+            .replace(/'$'/g, 's')
             .split('-')[0]
             .split(':')[0]
             .trim()
@@ -169,7 +170,7 @@ const generateFreshRound = async function () {
 
         const intUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_original_language=en&sort_by=popularity.desc&vote_count.gte=700&page=${randomInt}`;
 
-        const arabicUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_origin_country=EG&with_original_language=ar&sort_by=popularity.desc&vote_count.gte=30&page=${randomArabic}`;
+        const arabicUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_origin_country=EG&with_original_language=ar&sort_by=popularity.desc&vote_count.gte=20&page=${randomArabic}`;
 
         const [arabicMovies, intMovies] = await Promise.all([
             fetch(arabicUrlRandom, options),
