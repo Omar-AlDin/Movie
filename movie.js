@@ -148,7 +148,7 @@ const generateFreshRound = async function () {
 
         const intUrl = `https://api.themoviedb.org/3/discover/movie?with_original_language=en&sort_by=popularity.desc&vote_count.gte=700&page=1`;
 
-        const arabicUrl = `https://api.themoviedb.org/3/discover/movie?with_original_language=ar&sort_by=popularity.desc&vote_count.gte=15&page=1`;
+        const arabicUrl = `https://api.themoviedb.org/3/discover/movie?with_original_language=ar&sort_by=popularity.desc&vote_count.gte=12&page=1`;
 
         const [arabicMoviesRes, internMovieRes] = await Promise.all([
             fetch(arabicUrl, options),
@@ -170,7 +170,7 @@ const generateFreshRound = async function () {
 
         const intUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_original_language=en&sort_by=popularity.desc&vote_count.gte=700&page=${randomInt}`;
 
-        const arabicUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_original_language=ar&sort_by=popularity.desc&vote_count.gte=15&page=${randomArabic}`;
+        const arabicUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_original_language=ar&sort_by=popularity.desc&vote_count.gte=12&page=${randomArabic}`;
 
         const [arabicMovies, intMovies] = await Promise.all([
             fetch(arabicUrlRandom, options),
