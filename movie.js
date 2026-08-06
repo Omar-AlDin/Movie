@@ -170,7 +170,7 @@ const generateFreshRound = async function () {
 
         const intUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_original_language=en&sort_by=popularity.desc&vote_count.gte=700&page=${randomInt}`;
 
-        const arabicUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_origin_country=EG&with_original_language=ar&sort_by=popularity.desc&vote_count.gte=17&page=${randomArabic}`;
+        const arabicUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_original_language=ar&sort_by=popularity.desc&vote_count.gte=15&page=${randomArabic}`;
 
         const [arabicMovies, intMovies] = await Promise.all([
             fetch(arabicUrlRandom, options),
