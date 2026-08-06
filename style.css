@@ -869,17 +869,28 @@ body.flawless-victory .label-highscore {
 
 }
 
-@media (max-width: 600px) {
+/* Targets short screens specifically (landscape phones, SE, older devices) */
+@media (max-height: 700px) and (max-width: 600px) {
+    .image {
+        max-height: 20vh;
+    }
+
+    header {
+        padding-top: 3rem;
+    }
 
     .year-movie,
     .name-movie-hint {
-        font-size: 1rem;
-        padding: 5px 12px;
-        margin: 7px auto 0;
+        font-size: 0.9rem;
+        padding: 4px 10px;
+        margin: 5px auto 0;
     }
 
-    .image {
-        max-height: 25vh;
+    main {
+        gap: 0.6rem;
     }
 
+    .left {
+        gap: 0.8rem;
+    }
 }
