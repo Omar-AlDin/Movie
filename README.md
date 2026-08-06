@@ -3,7 +3,7 @@
 An interactive, retro 8-bit web application built with pure Vanilla JavaScript, HTML5, and CSS3. Features dynamic data fetching, progressive game logic, and responsive UI design.
 
 🔗 **Live Demo:** [Play Guess The Movie!](https://omar-aldin.github.io/Movie/)  
-💻 **Repository:** [GitHub Source Code](https://github.com/Omar-AlDin/Movie.git)
+💻 **Repository:** [GitHub Source Code](https://github.com/Omar-AlDin/Movie)
 
 ---
 
