@@ -864,16 +864,21 @@ body.flawless-victory .label-highscore {
         /* Glow matching your border */
     }
 
-    .hints-stack {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        max-height: 14vh;
-        overflow-y: auto;
-        width: 100%;
+
+
+
+}
+
+@media (max-width: 600px) {
+
+    .year-movie,
+    .name-movie-hint {
+        font-size: 1rem;
+        padding: 5px 12px;
+        margin: 8px auto 0;
     }
 
-
-
+    .image {
+        max-height: 22vh;
+    }
 }
