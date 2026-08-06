@@ -805,8 +805,7 @@ body.flawless-victory .label-highscore {
 
     .message {
         font-size: 1.3rem;
-
-
+        margin-top: 10px
     }
 
     .new {
@@ -873,7 +872,8 @@ body.flawless-victory .label-highscore {
 /* Targets short screens specifically (landscape phones, SE, older devices) */
 @media (max-height: 700px) and (max-width: 600px) {
     .image {
-        max-height: 20vh;
+        max-height: 23.5vh;
+        /* margin-top: 90px; */
     }
 
     header {
@@ -885,19 +885,42 @@ body.flawless-victory .label-highscore {
         font-size: 1rem;
         padding: 4px 10px;
         margin: 5px auto 0;
+
     }
+
 
     main {
         gap: 0.6rem;
     }
 
     .left {
-        gap: 0.8rem;
+        gap: 0.5rem;
     }
 
     .guessthemovie {
-        font-size: 1rem;
-        text-align: right;
-        padding-right: 15%
+        font-size: 1.3rem;
+        text-align: center;
+        padding-top: 40px;
+        /* padding-right: 8% */
+    }
+
+    .new {
+        padding-right: 10px;
+        padding-left: 10px;
+
+    }
+
+    .label-score,
+    .label-highscore {
+        font-size: 15px;
+    }
+
+    .check {
+        max-width: 30rem;
+    }
+
+    .guess {
+        padding: 1rem;
+        width: 30rem;
     }
 }

@@ -532,7 +532,7 @@ const newGame = function () {
     skipCount = 0;
     document.querySelector('.score').textContent = score;
     document.querySelector('.highscore').textContent = highScore;
-    document.querySelector('.new').textContent = "🎟 New Game!";
+    document.querySelector('.new').textContent = "🎟 New Game";
 
     // console.log("New game is working");
     document.querySelector('.message').textContent = "Start guessing...";
