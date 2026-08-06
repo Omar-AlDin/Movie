@@ -49,15 +49,16 @@ const cleanTitle = (str) => {
         .replace('·', '')
         .replace('ii', '2')
         .replace(/\./g, '')
-        .replace(/viii/gi, '8')
-        .replace(/vii/gi, '7')
-        .replace(/iii/gi, '3')
-        .replace(/vi/gi, '6')
-        .replace(/iv/gi, '4')
-        .replace(/ix/gi, '9')
-        .replace(/ii/gi, '2')
-        .replace(/v/gi, '5')
+        .replace(/\bviii/gi, '8')
+        .replace(/\bvii/gi, '7')
+        .replace(/\biii/gi, '3')
+        .replace(/\bvi/gi, '6')
+        .replace(/\biv/gi, '4')
+        .replace(/\bix/gi, '9')
+        .replace(/\bii/gi, '2')
+        .replace(/\bv/gi, '5')
         .replace(/\bi/gi, '1')
+        .replace('é', 'e')
         .replace(/\s+/g, ' ')
         .replace('زّ', 'ز')
         .trim()
@@ -191,7 +192,7 @@ const generateFreshRound = async function () {
         selectedMovies.forEach(movie => seenMovieIds.add(movie.id))
 
         movieDeck = selectedMovies.map(formatedObj)
-        // console.log(movieDeck)
+        console.log(movieDeck)
 
         if (movieDeck.length > 0) {
             movieElement.src = movieDeck[0].image;

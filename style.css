@@ -719,7 +719,7 @@ body.flawless-victory .label-highscore {
 
     header {
         height: auto;
-        padding-top: 4rem;
+        padding-top: 6rem;
         /* 🟢 Reduced from 9rem to save top vertical space */
     }
 
@@ -863,5 +863,17 @@ body.flawless-victory .label-highscore {
         /* box-shadow: 0 0 25px rgba(82, 63, 255, 0.6); */
         /* Glow matching your border */
     }
+
+    .hints-stack {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        max-height: 14vh;
+        overflow-y: auto;
+        width: 100%;
+    }
+
+
 
 }
