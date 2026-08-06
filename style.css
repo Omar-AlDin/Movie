@@ -77,6 +77,15 @@ h1 {
     gap: 1rem;
 }
 
+input[type="text"]:focus-visible {
+    outline: none;
+    border: 3px solid #00e5ff;
+    background-color: #111;
+    /* Darkens input slightly on focus */
+    color: #fff;
+    box-shadow: 0 0 5px rgba(0, 229, 255);
+}
+
 .guess {
 
     background: none;
@@ -101,6 +110,7 @@ h1 {
 
 .btn:hover {
     background-color: #ccc;
+    transform: translate(-2px, -2px)
 }
 
 .message {
