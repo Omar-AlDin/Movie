@@ -57,7 +57,7 @@ const cleanTitle = (str) => {
         .replace(/ix/gi, '9')
         .replace(/ii/gi, '2')
         .replace(/v/gi, '5')
-        .replace(/i/gi, '1')
+        .replace(/\bi/gi, '1')
         .replace(/\s+/g, ' ')
         .replace('زّ', 'ز')
         .trim()

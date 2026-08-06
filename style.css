@@ -696,8 +696,8 @@ body.flawless-victory .label-highscore {
 @media (prefers-color-scheme: dark) {
     .hint {
 
-        & hint:active,
-        & hint:focus-visible {
+        & .hint:active,
+        & .hint:focus-visible {
             outline-color: var(--yellow-400);
         }
     }
@@ -707,11 +707,23 @@ body.flawless-victory .label-highscore {
 
 /* 📱 RESPONSIVE PHONE FIXES */
 @media (max-width: 1080px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100dvh;
+        /* dvh = accounts for mobile browser address bar */
+        overflow-y: auto;
+        /* fallback scroll if content still doesn't fit */
+    }
+
     header {
         height: auto;
-        padding-top: 6rem;
+        padding-top: 4rem;
         /* 🟢 Reduced from 9rem to save top vertical space */
     }
+
+
 
     h1 {
         position: static;
@@ -723,6 +735,7 @@ body.flawless-victory .label-highscore {
 
     main {
         flex: 1;
+        min-height: 0;
         /* Takes up all remaining vertical space perfectly */
         height: auto;
         flex-direction: column;
@@ -805,7 +818,7 @@ body.flawless-victory .label-highscore {
         position: static;
 
         /* 2. Center it horizontally with auto margins */
-        margin: 30px auto 0;
+        margin: 15px auto 0;
         width: fit-content;
 
         /* 3. Keep font & spacing consistent */
