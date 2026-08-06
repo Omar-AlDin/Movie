@@ -3,14 +3,25 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Optional: Allows manual trigger from the Actions tab on GitHub
+  workflow_dispatch: 
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# PREVENTS CANCELLED DEPLOYMENTS
+# Ensures only one deployment runs at a time and queued ones wait
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
