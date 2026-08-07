@@ -78,6 +78,7 @@ const normalize = str => {
             .replace(/ي/g, "ى")
             .replace(/'/g, "")
             .replace(/'$'/g, 's')
+            .replace(/^the\s+/, '')
             .split('-')[0]
             .split(':')[0]
             .trim()
