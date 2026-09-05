@@ -6,12 +6,11 @@
 
 
 //API Key
-const accessToken = TMDB_ACCESS_TOKEN;
+const BASE_URL = 'https://bold-wood-ed55.o01604672.workers.dev/api';
 const options = {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`
     }
 };
 
@@ -147,9 +146,9 @@ const generateFreshRound = async function () {
         const roundLength = 10;
         movieYear.classList.add('hidden')
 
-        const intUrl = `https://api.themoviedb.org/3/discover/movie?with_original_language=en&sort_by=popularity.desc&vote_count.gte=700&page=1`;
+        const intUrl = `${BASE_URL}/discover/movie?with_original_language=en&sort_by=popularity.desc&vote_count.gte=700&page=1`;
 
-        const arabicUrl = `https://api.themoviedb.org/3/discover/movie?with_original_language=ar&sort_by=popularity.desc&vote_count.gte=12&page=1`;
+        const arabicUrl = `${BASE_URL}/discover/movie?with_original_language=ar&sort_by=popularity.desc&vote_count.gte=12&page=1`;
 
         const [arabicMoviesRes, internMovieRes] = await Promise.all([
             fetch(arabicUrl, options),
@@ -169,9 +168,9 @@ const generateFreshRound = async function () {
         const randomInt = Math.floor(Math.random() * intMaxPage) + 1;
         const randomArabic = Math.floor(Math.random() * arabicMaxPage) + 1;
 
-        const intUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_original_language=en&sort_by=popularity.desc&vote_count.gte=700&page=${randomInt}`;
+        const intUrlRandom = `${BASE_URL}/discover/movie?with_original_language=en&sort_by=popularity.desc&vote_count.gte=700&page=${randomInt}`;
 
-        const arabicUrlRandom = `https://api.themoviedb.org/3/discover/movie?with_original_language=ar&sort_by=popularity.desc&vote_count.gte=12&page=${randomArabic}`;
+        const arabicUrlRandom = `${BASE_URL}/discover/movie?with_original_language=ar&sort_by=popularity.desc&vote_count.gte=12&page=${randomArabic}`;
 
         const [arabicMovies, intMovies] = await Promise.all([
             fetch(arabicUrlRandom, options),
