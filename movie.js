@@ -227,7 +227,7 @@ movieElement.style.opacity = "1";
 const preMovieAnswer = document.querySelector(".previous-answer");
 
 const previousMovie = function () {
-  preMovieAnswer.textContent = movieDeck[0].title;
+  preMovieAnswer.innerHTML = `<a class="movie-link" href="https://omar-aldin.github.io/cinema-cafe/movie-details.html?id=${movieDeck[0].id}" target="_blank" rel="noopener noreferrer">${movieDeck[0].title}</a>`;
   preMovie.classList.remove("hidden");
 };
 
@@ -538,7 +538,8 @@ document.querySelector(".hint-wrapper").addEventListener("click", function () {
     movieYear.classList.add("hidden");
     movieNameHint.classList.add("hidden");
     preMovie.classList.remove("hidden");
-    preMovieAnswer.textContent = movieDeck[0].title;
+    // preMovieAnswer.textContent = movieDeck[0].title;
+    previousMovie();
     document.querySelector(".score").textContent = 0;
     document.querySelector(".image").src = "middle.gif";
     document.querySelector(".message").textContent =
