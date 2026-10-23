@@ -1,436 +1,439 @@
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    /* position: relative; */
-    font-family: 'Press Start 2P', sans-serif;
-    color: #eee;
-    background-color: #222;
-    overflow-x: hidden;
-    /* min-height: 100vh; */
-    /* Prevents weird horizontal phone shaking */
+  /* position: relative; */
+  font-family: "Press Start 2P", sans-serif;
+  color: #eee;
+  background-color: #222;
+  overflow-x: hidden;
+  /* min-height: 100vh; */
+  /* Prevents weird horizontal phone shaking */
 }
 
 /* LAYOUT */
 header {
-    position: relative;
-    height: 25vh;
+  position: relative;
+  height: 25vh;
 }
 
 main {
-    height: 75vh;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 2rem;
+  height: 75vh;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2rem;
 }
 
 .left {
-    width: 52rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+  width: 52rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
 .right {
-    width: 52rem;
-    font-size: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Centers the score layouts horizontally */
+  width: 52rem;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Centers the score layouts horizontally */
 }
 
 /* ELEMENTS STYLE */
 h1 {
-    font-size: 4rem;
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    top: 52%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  font-size: 4rem;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-
-
 .new {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
 }
 
 .input-row {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 input[type="text"]:focus-visible {
-    outline: none;
-    border: 3px solid #00e5ff;
-    background-color: #111;
-    /* Darkens input slightly on focus */
-    color: #fff;
-    box-shadow: 0 0 5px rgba(0, 229, 255);
+  outline: none;
+  border: 3px solid #00e5ff;
+  background-color: #111;
+  /* Darkens input slightly on focus */
+  color: #fff;
+  box-shadow: 0 0 5px rgba(0, 229, 255);
 }
 
 .guess {
-
-    background: none;
-    border: 4px solid #ffffff;
-    font-family: 'Your-Retro-Font', Arial, sans-serif;
-    color: inherit;
-    font-size: 2rem;
-    padding: 1.5rem;
-    width: 32rem;
-    text-align: center;
+  background: none;
+  border: 4px solid #ffffff;
+  font-family: "Your-Retro-Font", Arial, sans-serif;
+  color: inherit;
+  font-size: 2rem;
+  padding: 1.5rem;
+  width: 32rem;
+  text-align: center;
 }
 
 .btn {
-    border: none;
-    background-color: #eee;
-    color: #222;
-    font-size: 2rem;
-    font-family: inherit;
-    padding: 2rem 3rem;
-    cursor: pointer;
+  border: none;
+  background-color: #eee;
+  color: #222;
+  font-size: 2rem;
+  font-family: inherit;
+  padding: 2rem 3rem;
+  cursor: pointer;
 }
 
 .btn:hover {
-    background-color: #ccc;
-    transform: translate(-2px, -2px)
+  background-color: #ccc;
+  transform: translate(-2px, -2px);
 }
 
 .message {
-    font-size: 2rem;
-    height: auto;
-    /* 🟢 Changed from 3rem so it handles two lines safely without clipping */
-    min-height: 3rem;
-    /* 🟢 Keeps the minimum height layout when the text is short */
-    text-align: center;
-    /* 🟢 Forcefully centers the text horizontally */
-    margin-bottom: 1.5rem;
-    /* 🟢 Adds a clean gap between the text and the top of the image */
-    transition: color 0.3s ease-in-out;
-    width: 100%;
-    /* 🟢 Ensures it spans the width of the container to center correctly */
+  font-size: 2rem;
+  height: auto;
+  /* 🟢 Changed from 3rem so it handles two lines safely without clipping */
+  min-height: 3rem;
+  /* 🟢 Keeps the minimum height layout when the text is short */
+  text-align: center;
+  /* 🟢 Forcefully centers the text horizontally */
+  margin-bottom: 1.5rem;
+  /* 🟢 Adds a clean gap between the text and the top of the image */
+  transition: color 0.3s ease-in-out;
+  width: 100%;
+  /* 🟢 Ensures it spans the width of the container to center correctly */
 }
 
 /* Keeps text and numbers on a single line, spaced cleanly */
 .label-score,
 .label-highscore {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 35rem;
-    margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 35rem;
+  margin-bottom: 2rem;
 }
 
 .image {
-
-    height: auto;
-    max-height: 35vh;
-    border: 4px solid #fff;
-    border-radius: 4px;
-    transition: opacity 1s ease-in-out, border-color 0.4s ease-in-out;
-
+  height: auto;
+  max-height: 35vh;
+  border: 4px solid #fff;
+  border-radius: 4px;
+  transition:
+    opacity 1s ease-in-out,
+    border-color 0.4s ease-in-out;
 }
 
 body.flawless-victory .image {
-    max-height: 55vh;
-    /* 👈 Increases size from 35vh up to 50vh */
-    transform: scale(1.08);
-    /* 👈 Adds a subtle zoom effect */
-    box-shadow: 0 0 25px rgba(82, 63, 255, 0.6);
-    /* Glow matching your border */
+  max-height: 55vh;
+  /* 👈 Increases size from 35vh up to 50vh */
+  transform: scale(1.08);
+  /* 👈 Adds a subtle zoom effect */
+  box-shadow: 0 0 25px rgba(82, 63, 255, 0.6);
+  /* Glow matching your border */
 }
 
 .error-image {
-    width: 150px;
-    height: auto;
-    margin: 20px auto;
-    display: block;
+  width: 150px;
+  height: auto;
+  margin: 20px auto;
+  display: block;
 }
 
-
 .previous-movie {
-    position: absolute;
-    top: 400px;
-    align-items: center;
+  position: absolute;
+  top: 400px;
+  align-items: center;
 
-    /* Font & style polish */
-    font-family: "Lucida Console", "Courier New", monospace;
-    font-size: 1.2rem;
-    color: #ffffff;
+  /* Font & style polish */
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 1.2rem;
+  color: #ffffff;
 
-    /* Flex alignment so icon and text stay aligned */
-    display: flex;
-    gap: 8px;
+  /* Flex alignment so icon and text stay aligned */
+  display: flex;
+  gap: 8px;
 
-    /* Arcade style card background (optional, looks awesome!) */
-    background-color: #1e1e1e;
-    border: 2px solid #ffffff;
-    padding: 8px 16px;
-    box-shadow: 3px 3px 0px #000000;
+  /* Arcade style card background (optional, looks awesome!) */
+  background-color: #1e1e1e;
+  border: 2px solid #ffffff;
+  padding: 8px 16px;
+  box-shadow: 3px 3px 0px #000000;
 }
 
 /* Ensure the answer text stands out */
 .previous-answer {
-    color: #ffca28;
-    /* Gold accent */
-    font-weight: bold;
-    text-transform: capitalize;
+  color: #ffca28;
+  /* Gold accent */
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
 /* Release date hint */
 .year-movie {
-    position: absolute;
-    top: 400px;
-    align-items: center;
+  position: absolute;
+  top: 400px;
+  align-items: center;
 
-    /* Font & style polish */
-    font-family: "Lucida Console", "Courier New", monospace;
-    font-size: 1.2rem;
-    color: #ffffff;
+  /* Font & style polish */
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 1.2rem;
+  color: #ffffff;
 
-    /* Flex alignment so icon and text stay aligned */
-    display: flex;
-    gap: 8px;
+  /* Flex alignment so icon and text stay aligned */
+  display: flex;
+  gap: 8px;
 
-    /* Arcade style card background (optional, looks awesome!) */
-    background-color: #1e1e1e;
-    border: 2px solid #facc15;
-    ;
-    padding: 8px 16px;
-    box-shadow: 3px 3px 0px #000000;
+  /* Arcade style card background (optional, looks awesome!) */
+  background-color: #1e1e1e;
+  border: 2px solid #facc15;
+  padding: 8px 16px;
+  box-shadow: 3px 3px 0px #000000;
 }
 
 /* Ensure the answer text stands out */
 .year-answer {
-    color: #facc15;
-    ;
-    /* Gold accent */
-    font-weight: bold;
-    text-transform: capitalize;
+  color: #facc15;
+  /* Gold accent */
+  font-weight: bold;
+  text-transform: capitalize;
 }
-
 
 /* Name movie hint */
 .name-movie-hint {
-    position: absolute;
-    top: 350px;
-    align-items: center;
+  position: absolute;
+  top: 350px;
+  align-items: center;
 
-    /* Font & style polish */
-    font-family: "Lucida Console", "Courier New", monospace;
-    font-size: 1.2rem;
-    color: #ffffff;
+  /* Font & style polish */
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 1.2rem;
+  color: #ffffff;
 
-    /* Flex alignment so icon and text stay aligned */
-    display: flex;
-    gap: 8px;
+  /* Flex alignment so icon and text stay aligned */
+  display: flex;
+  gap: 8px;
 
-    /* Arcade style card background (optional, looks awesome!) */
-    background-color: #1e1e1e;
-    border: 2px solid #facc15;
-    ;
-    padding: 8px 16px;
-    box-shadow: 3px 3px 0px #000000;
+  /* Arcade style card background (optional, looks awesome!) */
+  background-color: #1e1e1e;
+  border: 2px solid #facc15;
+  padding: 8px 16px;
+  box-shadow: 3px 3px 0px #000000;
 }
 
 /* Ensure the answer text stands out */
 .name-answer {
-    color: #facc15;
-    ;
-    /* Gold accent */
-    font-weight: bold;
-    text-transform: capitalize;
+  color: #facc15;
+  /* Gold accent */
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
+.movie-link {
+  text-decoration: none;
+  color: #ffca28;
+  /* Gold accent */
+  font-weight: bold;
+  text-transform: capitalize;
+}
 /* LODER */
 
 .loader {
-    --color-1: #fff;
-    --color-2: #ddd;
-    --color-3: #bbb;
-    --color-4: #aaa;
-    --color-5: #eee;
-    --color-6: #0000;
-    --color-7: #bbdefb;
-    --color-8: #0004;
-    --color-9: #64b5f6;
-    --color-10: #607d8b;
-    --color-11: #999;
-    --size: 1px;
+  --color-1: #fff;
+  --color-2: #ddd;
+  --color-3: #bbb;
+  --color-4: #aaa;
+  --color-5: #eee;
+  --color-6: #0000;
+  --color-7: #bbdefb;
+  --color-8: #0004;
+  --color-9: #64b5f6;
+  --color-10: #607d8b;
+  --color-11: #999;
+  --size: 1px;
 
-    width: calc(120 * var(--size));
-    height: calc(150 * var(--size));
-    background-color: var(--color-1);
-    background-repeat: no-repeat;
-    background-image:
-        linear-gradient(var(--color-2) 50%, var(--color-3) 51%),
-        linear-gradient(var(--color-2), var(--color-2)),
-        linear-gradient(var(--color-2), var(--color-2)),
-        radial-gradient(ellipse at center,
-            var(--color-4) 25%,
-            var(--color-5) 26%,
-            var(--color-5) 50%,
-            var(--color-6) 55%),
-        radial-gradient(ellipse at center,
-            var(--color-4) 25%,
-            var(--color-5) 26%,
-            var(--color-5) 50%,
-            var(--color-6) 55%),
-        radial-gradient(ellipse at center,
-            var(--color-4) 25%,
-            var(--color-5) 26%,
-            var(--color-5) 50%,
-            var(--color-6) 55%);
-    background-position:
-        0 calc(20 * var(--size)),
-        calc(45 * var(--size)) 0,
-        calc(8 * var(--size)) calc(6 * var(--size)),
-        calc(55 * var(--size)) calc(3 * var(--size)),
-        calc(75 * var(--size)) calc(3 * var(--size)),
-        calc(95 * var(--size)) calc(3 * var(--size));
-    background-size:
-        100% calc(4 * var(--size)),
-        calc(1 * var(--size)) calc(23 * var(--size)),
-        calc(30 * var(--size)) calc(8 * var(--size)),
-        calc(15 * var(--size)) calc(15 * var(--size)),
-        calc(15 * var(--size)) calc(15 * var(--size)),
-        calc(15 * var(--size)) calc(15 * var(--size));
-    position: relative;
-    border-radius: 6%;
-    animation: shake 3s ease-in-out infinite;
-    transform-origin: calc(60 * var(--size)) calc(180 * var(--size));
+  width: calc(120 * var(--size));
+  height: calc(150 * var(--size));
+  background-color: var(--color-1);
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(var(--color-2) 50%, var(--color-3) 51%),
+    linear-gradient(var(--color-2), var(--color-2)),
+    linear-gradient(var(--color-2), var(--color-2)),
+    radial-gradient(
+      ellipse at center,
+      var(--color-4) 25%,
+      var(--color-5) 26%,
+      var(--color-5) 50%,
+      var(--color-6) 55%
+    ),
+    radial-gradient(
+      ellipse at center,
+      var(--color-4) 25%,
+      var(--color-5) 26%,
+      var(--color-5) 50%,
+      var(--color-6) 55%
+    ),
+    radial-gradient(
+      ellipse at center,
+      var(--color-4) 25%,
+      var(--color-5) 26%,
+      var(--color-5) 50%,
+      var(--color-6) 55%
+    );
+  background-position:
+    0 calc(20 * var(--size)),
+    calc(45 * var(--size)) 0,
+    calc(8 * var(--size)) calc(6 * var(--size)),
+    calc(55 * var(--size)) calc(3 * var(--size)),
+    calc(75 * var(--size)) calc(3 * var(--size)),
+    calc(95 * var(--size)) calc(3 * var(--size));
+  background-size:
+    100% calc(4 * var(--size)),
+    calc(1 * var(--size)) calc(23 * var(--size)),
+    calc(30 * var(--size)) calc(8 * var(--size)),
+    calc(15 * var(--size)) calc(15 * var(--size)),
+    calc(15 * var(--size)) calc(15 * var(--size)),
+    calc(15 * var(--size)) calc(15 * var(--size));
+  position: relative;
+  border-radius: 6%;
+  animation: shake 3s ease-in-out infinite;
+  transform-origin: calc(60 * var(--size)) calc(180 * var(--size));
 }
 
 .loader:before {
-    content: '';
-    position: absolute;
-    left: calc(5 * var(--size));
-    top: 100%;
-    width: calc(7 * var(--size));
-    height: calc(5 * var(--size));
-    background: var(--color-4);
-    border-radius: 0 0 calc(4 * var(--size)) calc(4 * var(--size));
-    box-shadow: calc(102 * var(--size)) 0 var(--color-4);
+  content: "";
+  position: absolute;
+  left: calc(5 * var(--size));
+  top: 100%;
+  width: calc(7 * var(--size));
+  height: calc(5 * var(--size));
+  background: var(--color-4);
+  border-radius: 0 0 calc(4 * var(--size)) calc(4 * var(--size));
+  box-shadow: calc(102 * var(--size)) 0 var(--color-4);
 }
 
 .loader:after {
-    content: '';
-    position: absolute;
-    width: calc(95 * var(--size));
-    height: calc(95 * var(--size));
-    left: 0;
-    right: 0;
-    margin: auto;
-    bottom: calc(20 * var(--size));
-    background-color: var(--color-7);
-    background-image:
-        linear-gradient(to right,
-            var(--color-8) 0%,
-            var(--color-8) 49%,
-            var(--color-6) 50%,
-            var(--color-6) 100%),
-        linear-gradient(135deg, var(--color-9) 50%, var(--color-10) 51%);
-    background-size:
-        calc(30 * var(--size)) 100%,
-        calc(90 * var(--size)) calc(80 * var(--size));
-    border-radius: 50%;
-    background-repeat: repeat, no-repeat;
-    background-position: 0 0;
-    box-sizing: border-box;
-    border: calc(10 * var(--size)) solid var(--color-2);
-    box-shadow:
-        0 0 0 calc(4 * var(--size)) var(--color-11) inset,
-        0 0 calc(6 * var(--size)) calc(6 * var(--size)) var(--color-8) inset;
-    animation: spin 3s ease-in-out infinite;
+  content: "";
+  position: absolute;
+  width: calc(95 * var(--size));
+  height: calc(95 * var(--size));
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: calc(20 * var(--size));
+  background-color: var(--color-7);
+  background-image:
+    linear-gradient(
+      to right,
+      var(--color-8) 0%,
+      var(--color-8) 49%,
+      var(--color-6) 50%,
+      var(--color-6) 100%
+    ),
+    linear-gradient(135deg, var(--color-9) 50%, var(--color-10) 51%);
+  background-size:
+    calc(30 * var(--size)) 100%,
+    calc(90 * var(--size)) calc(80 * var(--size));
+  border-radius: 50%;
+  background-repeat: repeat, no-repeat;
+  background-position: 0 0;
+  box-sizing: border-box;
+  border: calc(10 * var(--size)) solid var(--color-2);
+  box-shadow:
+    0 0 0 calc(4 * var(--size)) var(--color-11) inset,
+    0 0 calc(6 * var(--size)) calc(6 * var(--size)) var(--color-8) inset;
+  animation: spin 3s ease-in-out infinite;
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
 
-    50% {
-        transform: rotate(360deg);
-    }
+  50% {
+    transform: rotate(360deg);
+  }
 
-    75% {
-        transform: rotate(750deg);
-    }
+  75% {
+    transform: rotate(750deg);
+  }
 
-    100% {
-        transform: rotate(1800deg);
-    }
+  100% {
+    transform: rotate(1800deg);
+  }
 }
 
 @keyframes shake {
+  65%,
+  80%,
+  88%,
+  96% {
+    transform: rotate(0.5deg);
+  }
 
-    65%,
-    80%,
-    88%,
-    96% {
-        transform: rotate(0.5deg);
-    }
+  50%,
+  75%,
+  84%,
+  92% {
+    transform: rotate(-0.5deg);
+  }
 
-    50%,
-    75%,
-    84%,
-    92% {
-        transform: rotate(-0.5deg);
-    }
-
-    0%,
-    50%,
-    100% {
-        transform: rotate(0);
-    }
+  0%,
+  50%,
+  100% {
+    transform: rotate(0);
+  }
 }
 
 /* Gif */
 body.bg-fireworks {
-    /* 50% dark overlay on top of the GIF */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('fireworks.gif');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+  /* 50% dark overlay on top of the GIF */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url("fireworks.gif");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
-
 
 body.flawless-victory h1,
 body.flawless-victory p,
 body.flawless-victory .label-score,
 body.flawless-victory .label-highscore {
-    text-shadow:
-        2px 2px 0px #000,
-        -2px -2px 0px #000,
-        2px -2px 0px #000,
-        -2px 2px 0px #000;
+  text-shadow:
+    2px 2px 0px #000,
+    -2px -2px 0px #000,
+    2px -2px 0px #000,
+    -2px 2px 0px #000;
 }
-
-
 
 /* Helper class to hide/show elements END LOADER*/
 .hidden {
-    display: none;
+  display: none;
 }
-
 
 /* ToolTip */
 /* 1. Make the wrapper the positioning anchor */
@@ -439,502 +442,483 @@ body.flawless-victory .label-highscore {
 ========================================== */
 /* 1. Tooltip Box */
 .hint-wrapper::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 135%;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 135%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
 
-    background: linear-gradient(135deg, #fffdf5, #bbbaba);
-    /* soft warm gradient instead of flat white, keeps yellow theme */
-    color: #1f2937;
-    padding: 10px 18px;
-    border-radius: 10px;
-    /* softened, like the reference */
-    font-size: 0.95rem;
-    font-family: monospace;
-    /* keep retro font — this is what preserves the game identity */
-    font-weight: bold;
-    white-space: nowrap;
-    border: 1px solid rgba(255, 221, 51, 0.4);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-    /* soft, diffused shadow like reference (adjusted darker for dark bg) */
+  background: linear-gradient(135deg, #fffdf5, #bbbaba);
+  /* soft warm gradient instead of flat white, keeps yellow theme */
+  color: #1f2937;
+  padding: 10px 18px;
+  border-radius: 10px;
+  /* softened, like the reference */
+  font-size: 0.95rem;
+  font-family: monospace;
+  /* keep retro font — this is what preserves the game identity */
+  font-weight: bold;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 221, 51, 0.4);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  /* soft, diffused shadow like reference (adjusted darker for dark bg) */
 
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    pointer-events: none;
-    z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 100;
 }
 
 /* 2. Tooltip Arrow — smooth triangle, matches box background */
 .hint-wrapper::before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
 
-    border-width: 8px;
-    border-style: solid;
-    border-color: #fff8e1 transparent transparent transparent;
-    /* matches tooltip bg, not yellow-400, for a cleaner blend */
+  border-width: 8px;
+  border-style: solid;
+  border-color: #fff8e1 transparent transparent transparent;
+  /* matches tooltip bg, not yellow-400, for a cleaner blend */
 
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    pointer-events: none;
-    z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 100;
 }
 
 /* 3. Trigger Class when user guesses wrong */
 .hint-wrapper.show-tooltip::after,
 .hint-wrapper.show-tooltip::before {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* 4. Glow effect on the key word/icon, like the reference's <strong> glow */
 @keyframes glow {
+  0%,
+  100% {
+    text-shadow: 0 0 8px rgba(255, 221, 51, 0.5);
+  }
 
-    0%,
-    100% {
-        text-shadow: 0 0 8px rgba(255, 221, 51, 0.5);
-    }
-
-    50% {
-        text-shadow: 0 0 16px rgba(255, 221, 51, 0.8);
-    }
+  50% {
+    text-shadow: 0 0 16px rgba(255, 221, 51, 0.8);
+  }
 }
 
 .hint-wrapper::after strong,
 .hint-wrapper::after b {
-    animation: glow 2s infinite;
-    color: #b45309;
-    /* warm amber to stand out on the light background */
+  animation: glow 2s infinite;
+  color: #b45309;
+  /* warm amber to stand out on the light background */
 }
-
 
 /* button hint */
 .hint-wrapper {
-    --stone-50: #fafaf9;
-    --stone-800: #000000;
-    --yellow-300: #fde047;
-    --yellow-400: #facc15;
-    --yellow-500: #eab308;
-    --black-25: rgba(243, 240, 240, 0.25);
+  --stone-50: #fafaf9;
+  --stone-800: #000000;
+  --yellow-300: #fde047;
+  --yellow-400: #facc15;
+  --yellow-500: #eab308;
+  --black-25: rgba(243, 240, 240, 0.25);
 
-    position: relative;
-    display: block;
-    width: 4rem;
-    height: 4rem;
+  position: relative;
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+
+  & > .hint-btn {
     cursor: pointer;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    appearance: none;
+    border: 1px solid var(--stone-800);
+    border-radius: 0.25rem;
+    background-color: var(--yellow-400);
+    border-color: white;
+    outline: 1px solid;
+    outline-offset: 0.95px;
+    cursor: pointer;
+    transition: background-color 0.2s;
 
-    &>.hint-btn {
-
-        cursor: pointer;
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        appearance: none;
-        border: 1px solid var(--stone-800);
-        border-radius: 0.25rem;
-        background-color: var(--yellow-400);
-        border-color: white;
-        outline: 1px solid;
-        outline-offset: 0.95px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-
-        &:hover {
-            background-color: var(--yellow-300);
-        }
-
-        &:checked {
-            background-color: var(--stone-800);
-            border-color: var(--stone-800);
-
-            &:hover {
-                background-color: #44403c;
-            }
-        }
-
-        &:active {
-            outline-color: var(--stone-800);
-        }
-
-        &:focus-visible {
-            outline-color: var(--stone-800);
-            outline-style: dashed;
-        }
+    &:hover {
+      background-color: var(--yellow-300);
     }
 
-    &>span:nth-child(2) {
-        position: absolute;
-        inset: 3px;
-        pointer-events: none;
-        background-color: var(--yellow-400);
-        border-bottom: 2px solid var(--black-25);
-        transition: transform 75ms;
+    &:checked {
+      background-color: var(--stone-800);
+      border-color: var(--stone-800);
 
-        &::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(rgba(54, 53, 53, 0.8) 20%,
-                    transparent 20%),
-                radial-gradient(rgb(43, 42, 42) 20%, transparent 20%);
-            background-position:
-                0 0,
-                4px 4px;
-            background-size: 8px 8px;
-            mix-blend-mode: hard-light;
-            opacity: 0.5;
-            animation: dots 0.5s infinite linear;
-        }
+      &:hover {
+        background-color: #44403c;
+      }
     }
 
-    &>span:nth-child(3) {
-        position: absolute;
-        pointer-events: none;
-        inset: 0;
-
-        &::before {
-            content: "";
-            width: 0.375rem;
-            height: 0.375rem;
-            position: absolute;
-            top: 0.25rem;
-            left: 0.25rem;
-            background-color: var(--stone-800);
-            border-radius: 0.125rem;
-            box-shadow:
-                3.125em 0 var(--stone-800),
-                0 3.125em var(--stone-800),
-                3.125em 3.125em var(--stone-800);
-        }
+    &:active {
+      outline-color: var(--stone-800);
     }
 
-    &>span:nth-child(4) {
-        position: absolute;
-        pointer-events: none;
-        inset: 0;
-        filter: drop-shadow(0.25em 0.25em 0 rgba(0, 0, 0, 0.2));
-        transition: all 75ms;
-
-        &::after {
-            content: "";
-            width: 0.25rem;
-            height: 0.25rem;
-            position: absolute;
-            top: 0.875rem;
-            left: 1rem;
-            border-radius: 0.0625px;
-            background-color: var(--stone-800);
-            box-shadow:
-                0.75em 2em var(--stone-800),
-                1em 2em var(--stone-800),
-                0.75em 1.75em var(--stone-800),
-                1em 1.75em var(--stone-800),
-                0.75em 1.25em var(--stone-800),
-                1em 1.25em var(--stone-800),
-                0.75em 1em var(--stone-800),
-                1em 1em var(--stone-800),
-                1em 0.75em var(--stone-800),
-                1.5em 0.75em var(--stone-800),
-                1.25em 0.75em var(--stone-800),
-                1.25em -0.25em var(--stone-800),
-                1.5em 0em var(--stone-800),
-                1.25em 0.5em var(--stone-800),
-                1.5em 0.5em var(--stone-800),
-                1.25em 0.25em var(--stone-800),
-                1.5em 0.25em var(--stone-800),
-                1.25em 0 var(--stone-800),
-                1em -0.25em var(--stone-800),
-                0.75em -0.25em var(--stone-800),
-                0.5em -0.25em var(--stone-800),
-                0.25em -0.25em var(--stone-800),
-                0.25em 0 var(--stone-800),
-                0 0.25em var(--stone-800),
-                0 0.5em var(--stone-800),
-                0.25em 0.25em var(--stone-800),
-                0.25em 0.5em var(--stone-800);
-        }
+    &:focus-visible {
+      outline-color: var(--stone-800);
+      outline-style: dashed;
     }
+  }
 
-    &>span:nth-child(5) {
-        position: absolute;
-        background-color: var(--yellow-400);
-        border: 2px solid var(--stone-800);
-        border-radius: 0.75rem;
-        pointer-events: none;
-        z-index: -1;
-        inset: 0.5rem 1.5rem;
-        box-shadow:
-            7px 0 0 0 var(--stone-800),
-            inset 0 2px 0 0 var(--yellow-300),
-            inset 0 -2px 0 0 var(--yellow-500);
-        transition: all 0ms cubic-bezier(0, 0.5, 0.4, 1);
-    }
+  & > span:nth-child(2) {
+    position: absolute;
+    inset: 3px;
+    pointer-events: none;
+    background-color: var(--yellow-400);
+    border-bottom: 2px solid var(--black-25);
+    transition: transform 75ms;
 
-    & .hint-btn:active~span:nth-child(5) {
-        transform: translateY(-200%);
-        transition-duration: 200ms;
-        opacity: 0;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(rgba(54, 53, 53, 0.8) 20%, transparent 20%),
+        radial-gradient(rgb(43, 42, 42) 20%, transparent 20%);
+      background-position:
+        0 0,
+        4px 4px;
+      background-size: 8px 8px;
+      mix-blend-mode: hard-light;
+      opacity: 0.5;
+      animation: dots 0.5s infinite linear;
     }
+  }
 
-    & .hint-btn:hover~span:nth-child(4) {
-        filter: drop-shadow(0.125em 0.125em 0 rgba(0, 0, 0, 0.2));
+  & > span:nth-child(3) {
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+
+    &::before {
+      content: "";
+      width: 0.375rem;
+      height: 0.375rem;
+      position: absolute;
+      top: 0.25rem;
+      left: 0.25rem;
+      background-color: var(--stone-800);
+      border-radius: 0.125rem;
+      box-shadow:
+        3.125em 0 var(--stone-800),
+        0 3.125em var(--stone-800),
+        3.125em 3.125em var(--stone-800);
     }
+  }
+
+  & > span:nth-child(4) {
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+    filter: drop-shadow(0.25em 0.25em 0 rgba(0, 0, 0, 0.2));
+    transition: all 75ms;
+
+    &::after {
+      content: "";
+      width: 0.25rem;
+      height: 0.25rem;
+      position: absolute;
+      top: 0.875rem;
+      left: 1rem;
+      border-radius: 0.0625px;
+      background-color: var(--stone-800);
+      box-shadow:
+        0.75em 2em var(--stone-800),
+        1em 2em var(--stone-800),
+        0.75em 1.75em var(--stone-800),
+        1em 1.75em var(--stone-800),
+        0.75em 1.25em var(--stone-800),
+        1em 1.25em var(--stone-800),
+        0.75em 1em var(--stone-800),
+        1em 1em var(--stone-800),
+        1em 0.75em var(--stone-800),
+        1.5em 0.75em var(--stone-800),
+        1.25em 0.75em var(--stone-800),
+        1.25em -0.25em var(--stone-800),
+        1.5em 0em var(--stone-800),
+        1.25em 0.5em var(--stone-800),
+        1.5em 0.5em var(--stone-800),
+        1.25em 0.25em var(--stone-800),
+        1.5em 0.25em var(--stone-800),
+        1.25em 0 var(--stone-800),
+        1em -0.25em var(--stone-800),
+        0.75em -0.25em var(--stone-800),
+        0.5em -0.25em var(--stone-800),
+        0.25em -0.25em var(--stone-800),
+        0.25em 0 var(--stone-800),
+        0 0.25em var(--stone-800),
+        0 0.5em var(--stone-800),
+        0.25em 0.25em var(--stone-800),
+        0.25em 0.5em var(--stone-800);
+    }
+  }
+
+  & > span:nth-child(5) {
+    position: absolute;
+    background-color: var(--yellow-400);
+    border: 2px solid var(--stone-800);
+    border-radius: 0.75rem;
+    pointer-events: none;
+    z-index: -1;
+    inset: 0.5rem 1.5rem;
+    box-shadow:
+      7px 0 0 0 var(--stone-800),
+      inset 0 2px 0 0 var(--yellow-300),
+      inset 0 -2px 0 0 var(--yellow-500);
+    transition: all 0ms cubic-bezier(0, 0.5, 0.4, 1);
+  }
+
+  & .hint-btn:active ~ span:nth-child(5) {
+    transform: translateY(-200%);
+    transition-duration: 200ms;
+    opacity: 0;
+  }
+
+  & .hint-btn:hover ~ span:nth-child(4) {
+    filter: drop-shadow(0.125em 0.125em 0 rgba(0, 0, 0, 0.2));
+  }
 }
 
 @keyframes dots {
-    0% {
-        background-position:
-            0 0,
-            4px 4px;
-    }
+  0% {
+    background-position:
+      0 0,
+      4px 4px;
+  }
 
-    100% {
-        background-position:
-            8px 0,
-            12px 4px;
-    }
+  100% {
+    background-position:
+      8px 0,
+      12px 4px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-    .hint {
-
-        & .hint:active,
-        & .hint:focus-visible {
-            outline-color: var(--yellow-400);
-        }
+  .hint {
+    & .hint:active,
+    & .hint:focus-visible {
+      outline-color: var(--yellow-400);
     }
+  }
 }
-
-
 
 /* 📱 RESPONSIVE PHONE FIXES */
 @media (max-width: 1080px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    /* dvh = accounts for mobile browser address bar */
+    overflow-y: auto;
+    /* fallback scroll if content still doesn't fit */
+  }
 
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100dvh;
-        /* dvh = accounts for mobile browser address bar */
-        overflow-y: auto;
-        /* fallback scroll if content still doesn't fit */
-    }
+  header {
+    height: auto;
+    padding-top: 6rem;
+    /* 🟢 Reduced from 9rem to save top vertical space */
+  }
 
-    header {
-        height: auto;
-        padding-top: 6rem;
-        /* 🟢 Reduced from 9rem to save top vertical space */
-    }
+  h1 {
+    position: static;
+    transform: none;
+    font-size: 1.8rem;
+    /* 🟢 Reduced from 2.2rem to take up less vertical room */
+    margin-bottom: 1rem;
+  }
 
+  main {
+    flex: 1;
+    min-height: 0;
+    /* Takes up all remaining vertical space perfectly */
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    /* Centers the entire game board vertically */
+    gap: 1rem;
+    /* 🟢 Reduced gap to prevent pushing elements off-screen */
+    padding: 1rem 2rem;
+  }
 
+  .left {
+    width: 100%;
+    gap: 1.2rem;
+    /* 🟢 Shrinks the massive gaps between image, input, and skip button */
+  }
 
-    h1 {
-        position: static;
-        transform: none;
-        font-size: 1.8rem;
-        /* 🟢 Reduced from 2.2rem to take up less vertical room */
-        margin-bottom: 1rem;
-    }
+  /* 🟢 NEW: Directly caps the movie image height on mobile so it doesn't push elements down */
+  .image {
+    max-height: 25vh;
+    /* 👈 Reduced from 35vh so the poster fits comfortably on short screens */
+    width: auto;
+  }
 
-    main {
-        flex: 1;
-        min-height: 0;
-        /* Takes up all remaining vertical space perfectly */
-        height: auto;
-        flex-direction: column;
-        justify-content: center;
-        /* Centers the entire game board vertically */
-        gap: 1rem;
-        /* 🟢 Reduced gap to prevent pushing elements off-screen */
-        padding: 1rem 2rem;
-    }
+  .right {
+    width: 100%;
+    margin-top: 1rem;
+  }
 
-    .left {
-        width: 100%;
-        gap: 1.2rem;
-        /* 🟢 Shrinks the massive gaps between image, input, and skip button */
-    }
+  .input-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    /* 🟢 Reduced from 1.5rem */
+  }
 
-    /* 🟢 NEW: Directly caps the movie image height on mobile so it doesn't push elements down */
-    .image {
-        max-height: 25vh;
-        /* 👈 Reduced from 35vh so the poster fits comfortably on short screens */
-        width: auto;
+  /* 🟢 Reduces button vertical thickness on mobile devices */
+  .btn {
+    padding: 1.2rem 2.5rem;
+    /* 👈 Shorter padding makes buttons physically thinner */
+    font-size: 1.3rem;
+  }
 
-    }
+  .guess {
+    width: 100%;
+    max-width: 32rem;
+    padding: 1.2rem;
+    /* 👈 Matches button scaling */
+    font-size: 1.6rem;
+  }
 
-    .right {
-        width: 100%;
-        margin-top: 1rem;
-    }
+  .check {
+    width: 100%;
+    max-width: 32rem;
+  }
 
-    .input-row {
-        flex-direction: column;
-        width: 100%;
-        gap: 1rem;
-        /* 🟢 Reduced from 1.5rem */
-    }
+  .label-score,
+  .label-highscore {
+    margin-bottom: 1rem;
 
-    /* 🟢 Reduces button vertical thickness on mobile devices */
-    .btn {
-        padding: 1.2rem 2.5rem;
-        /* 👈 Shorter padding makes buttons physically thinner */
-        font-size: 1.3rem;
-    }
+    /* 🟢 Brings scores slightly closer together */
+  }
 
-    .guess {
-        width: 100%;
-        max-width: 32rem;
-        padding: 1.2rem;
-        /* 👈 Matches button scaling */
-        font-size: 1.6rem;
-    }
+  .guessthemovie {
+    font-size: 2.2rem;
+  }
 
-    .check {
-        width: 100%;
-        max-width: 32rem;
-    }
+  .message {
+    font-size: 1.3rem;
+    margin-top: 10px;
+  }
 
-    .label-score,
-    .label-highscore {
-        margin-bottom: 1rem;
+  .new {
+    font-size: 0.9rem;
+    padding: 11px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 
-        /* 🟢 Brings scores slightly closer together */
-    }
+  .previous-movie {
+    /* 1. Reset absolute positioning */
+    position: static;
 
-    .guessthemovie {
-        font-size: 2.2rem;
-    }
+    /* 2. Center it horizontally with auto margins */
+    margin: 15px auto 0;
+    width: fit-content;
 
-    .message {
-        font-size: 1.3rem;
-        margin-top: 10px
-    }
+    /* 3. Keep font & spacing consistent */
+    font-size: 1.1rem;
+    padding: 6px 14px;
+  }
 
-    .new {
-        font-size: 0.9rem;
-        padding: 11px;
-        padding-right: 15px;
-        padding-left: 15px;
+  /* Movie name hint */
+  .name-movie-hint {
+    /* 1. Reset absolute positioning */
+    position: static;
 
+    /* 2. Center it horizontally with auto margins */
+    margin: 12px auto 0;
+    width: fit-content;
 
-    }
+    /* 3. Keep font & spacing consistent */
+    font-size: 1.1rem;
+    padding: 6px 14px;
+  }
 
-    .previous-movie {
-        /* 1. Reset absolute positioning */
-        position: static;
+  /* Movie year hint */
 
-        /* 2. Center it horizontally with auto margins */
-        margin: 15px auto 0;
-        width: fit-content;
+  .year-movie {
+    /* 1. Reset absolute positioning */
+    position: static;
 
-        /* 3. Keep font & spacing consistent */
-        font-size: 1.1rem;
-        padding: 6px 14px;
-    }
+    /* 2. Center it horizontally with auto margins */
+    margin: 15px auto 0;
+    width: fit-content;
 
-    /* Movie name hint */
-    .name-movie-hint {
-        /* 1. Reset absolute positioning */
-        position: static;
+    /* 3. Keep font & spacing consistent */
+    font-size: 1.1rem;
+    padding: 6px 14px;
+  }
 
-        /* 2. Center it horizontally with auto margins */
-        margin: 12px auto 0;
-        width: fit-content;
-
-        /* 3. Keep font & spacing consistent */
-        font-size: 1.1rem;
-        padding: 6px 14px;
-    }
-
-    /* Movie year hint */
-
-    .year-movie {
-        /* 1. Reset absolute positioning */
-        position: static;
-
-        /* 2. Center it horizontally with auto margins */
-        margin: 15px auto 0;
-        width: fit-content;
-
-        /* 3. Keep font & spacing consistent */
-        font-size: 1.1rem;
-        padding: 6px 14px;
-    }
-
-    body.flawless-victory .image {
-        max-height: 29vh;
-        /* 👈 Increases size from 35vh up to 50vh */
-        transform: scale(1.08);
-        /* 👈 Adds a subtle zoom effect */
-        /* box-shadow: 0 0 25px rgba(82, 63, 255, 0.6); */
-        /* Glow matching your border */
-    }
-
-
-
-
+  body.flawless-victory .image {
+    max-height: 29vh;
+    /* 👈 Increases size from 35vh up to 50vh */
+    transform: scale(1.08);
+    /* 👈 Adds a subtle zoom effect */
+    /* box-shadow: 0 0 25px rgba(82, 63, 255, 0.6); */
+    /* Glow matching your border */
+  }
 }
 
 /* Targets short screens specifically (landscape phones, SE, older devices) */
 @media (max-height: 700px) and (max-width: 600px) {
-    .image {
-        max-height: 23.5vh;
-        /* margin-top: 90px; */
-    }
+  .image {
+    max-height: 23.5vh;
+    /* margin-top: 90px; */
+  }
 
-    header {
-        padding-top: 3rem;
-    }
+  header {
+    padding-top: 3rem;
+  }
 
-    .year-movie,
-    .name-movie-hint {
-        font-size: 1rem;
-        padding: 4px 10px;
-        margin: 5px auto 0;
+  .year-movie,
+  .name-movie-hint {
+    font-size: 1rem;
+    padding: 4px 10px;
+    margin: 5px auto 0;
+  }
 
-    }
+  main {
+    gap: 0.6rem;
+  }
 
+  .left {
+    gap: 0.5rem;
+  }
 
-    main {
-        gap: 0.6rem;
-    }
+  .guessthemovie {
+    font-size: 1.3rem;
+    text-align: center;
+    padding-top: 40px;
+    /* padding-right: 8% */
+  }
 
-    .left {
-        gap: 0.5rem;
-    }
+  .new {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 
-    .guessthemovie {
-        font-size: 1.3rem;
-        text-align: center;
-        padding-top: 40px;
-        /* padding-right: 8% */
-    }
+  .label-score,
+  .label-highscore {
+    font-size: 15px;
+  }
 
-    .new {
-        padding-right: 10px;
-        padding-left: 10px;
+  .check {
+    max-width: 30rem;
+  }
 
-    }
-
-    .label-score,
-    .label-highscore {
-        font-size: 15px;
-    }
-
-    .check {
-        max-width: 30rem;
-    }
-
-    .guess {
-        padding: 1rem;
-        width: 30rem;
-    }
+  .guess {
+    padding: 1rem;
+    width: 30rem;
+  }
 }
