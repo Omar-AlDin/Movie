@@ -252,12 +252,16 @@ body.flawless-victory .image {
 }
 
 .movie-link {
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(255, 202, 40, 0.55);
   color: #ffca28;
   /* Gold accent */
   font-weight: bold;
   text-transform: capitalize;
 }
+
 /* LODER */
 
 .loader {
